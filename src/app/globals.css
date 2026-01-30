@@ -1,8 +1,73 @@
 @import "tailwindcss";
 
+/* NESTS Color Theme */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary Blues */
+  --primary-900: #0A2540;
+  --primary-800: #0D3A5F;
+  --primary-700: #104E7E;
+  --primary-600: #14629D;
+  --primary-500: #1976BC;
+  --primary-400: #4A90D9;
+  --primary-300: #7BAEE6;
+  --primary-200: #B3D1F2;
+  --primary-100: #E6F1FC;
+  --primary-50: #F5F9FE;
+  
+  /* Secondary Orange/Amber */
+  --secondary-900: #8B4513;
+  --secondary-800: #A0522D;
+  --secondary-700: #B85C1A;
+  --secondary-600: #D97706;
+  --secondary-500: #F59E0B;
+  --secondary-400: #FBBF24;
+  --secondary-300: #FCD34D;
+  --secondary-200: #FDE68A;
+  --secondary-100: #FEF3C7;
+  --secondary-50: #FFFBEB;
+  
+  /* Success Green */
+  --success-700: #047857;
+  --success-600: #059669;
+  --success-500: #10B981;
+  --success-400: #34D399;
+  --success-100: #D1FAE5;
+  
+  /* Warning */
+  --warning-700: #B45309;
+  --warning-600: #D97706;
+  --warning-500: #F59E0B;
+  --warning-100: #FEF3C7;
+  
+  /* Error */
+  --error-700: #B91C1C;
+  --error-600: #DC2626;
+  --error-500: #EF4444;
+  --error-100: #FEE2E2;
+  
+  /* Info */
+  --info-700: #0369A1;
+  --info-600: #0284C7;
+  --info-500: #0EA5E9;
+  --info-100: #E0F2FE;
+  
+  /* Neutrals */
+  --neutral-900: #111827;
+  --neutral-800: #1F2937;
+  --neutral-700: #374151;
+  --neutral-600: #4B5563;
+  --neutral-500: #6B7280;
+  --neutral-400: #9CA3AF;
+  --neutral-300: #D1D5DB;
+  --neutral-200: #E5E7EB;
+  --neutral-100: #F3F4F6;
+  --neutral-50: #F9FAFB;
+  
+  /* Semantic colors */
+  --background: var(--neutral-50);
+  --foreground: var(--neutral-900);
+  --card-bg: #FFFFFF;
+  --border-color: var(--neutral-200);
 }
 
 @theme inline {
@@ -10,17 +75,121 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  
+  /* Primary colors */
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
+  
+  /* Secondary colors */
+  --color-secondary-50: var(--secondary-50);
+  --color-secondary-100: var(--secondary-100);
+  --color-secondary-200: var(--secondary-200);
+  --color-secondary-300: var(--secondary-300);
+  --color-secondary-400: var(--secondary-400);
+  --color-secondary-500: var(--secondary-500);
+  --color-secondary-600: var(--secondary-600);
+  --color-secondary-700: var(--secondary-700);
+  --color-secondary-800: var(--secondary-800);
+  --color-secondary-900: var(--secondary-900);
+  
+  /* Success colors */
+  --color-success-100: var(--success-100);
+  --color-success-400: var(--success-400);
+  --color-success-500: var(--success-500);
+  --color-success-600: var(--success-600);
+  --color-success-700: var(--success-700);
+  
+  /* Warning colors */
+  --color-warning-100: var(--warning-100);
+  --color-warning-500: var(--warning-500);
+  --color-warning-600: var(--warning-600);
+  --color-warning-700: var(--warning-700);
+  
+  /* Error colors */
+  --color-error-100: var(--error-100);
+  --color-error-500: var(--error-500);
+  --color-error-600: var(--error-600);
+  --color-error-700: var(--error-700);
+  
+  /* Info colors */
+  --color-info-100: var(--info-100);
+  --color-info-500: var(--info-500);
+  --color-info-600: var(--info-600);
+  --color-info-700: var(--info-700);
+  
+  /* Neutral colors */
+  --color-neutral-50: var(--neutral-50);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-400: var(--neutral-400);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-600: var(--neutral-600);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-800: var(--neutral-800);
+  --color-neutral-900: var(--neutral-900);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Custom utility classes */
+.btn-primary {
+  @apply bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-secondary {
+  @apply bg-secondary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-secondary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-outline {
+  @apply border-2 border-primary-600 text-primary-600 px-4 py-2 rounded-lg font-medium hover:bg-primary-50 transition-colors;
+}
+
+.card {
+  @apply bg-white rounded-xl shadow-sm border border-neutral-200 p-6;
+}
+
+.input {
+  @apply w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors;
+}
+
+.label {
+  @apply block text-sm font-medium text-neutral-700 mb-1;
+}
+
+/* Status badges */
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.badge-success {
+  @apply bg-success-100 text-success-700 border border-success-400;
+}
+
+.badge-warning {
+  @apply bg-warning-100 text-warning-700 border border-secondary-400;
+}
+
+.badge-error {
+  @apply bg-error-100 text-error-700 border border-error-500;
+}
+
+.badge-info {
+  @apply bg-info-100 text-info-700 border border-info-500;
+}
+
+.badge-neutral {
+  @apply bg-neutral-100 text-neutral-700 border border-neutral-300;
 }
