@@ -2,42 +2,51 @@
 
 /* NESTS Color Theme */
 :root {
-  /* Primary Blues */
-  --primary-900: #0A2540;
-  --primary-800: #0D3A5F;
-  --primary-700: #104E7E;
-  --primary-600: #14629D;
-  --primary-500: #1976BC;
-  --primary-400: #4A90D9;
-  --primary-300: #7BAEE6;
-  --primary-200: #B3D1F2;
-  --primary-100: #E6F1FC;
-  --primary-50: #F5F9FE;
+  /* Primary Colors - Modern Design */
+  --primary-blue: #0B4F6C;
+  --primary-teal: #01BAEF;
+  --primary-green: #20BF55;
   
-  /* Secondary Orange/Amber */
-  --secondary-900: #8B4513;
-  --secondary-800: #A0522D;
-  --secondary-700: #B85C1A;
-  --secondary-600: #D97706;
-  --secondary-500: #F59E0B;
-  --secondary-400: #FBBF24;
-  --secondary-300: #FCD34D;
-  --secondary-200: #FDE68A;
-  --secondary-100: #FEF3C7;
-  --secondary-50: #FFFBEB;
+  /* Primary Blues (Shades) */
+  --primary-900: #0a4159;
+  --primary-800: #0B4F6C;
+  --primary-700: #0c5d7f;
+  --primary-600: #0e7099;
+  --primary-500: #1083b3;
+  --primary-400: #3a9ec9;
+  --primary-300: #64b9df;
+  --primary-200: #8ed4f4;
+  --primary-100: #c7eaff;
+  --primary-50: #e3f5ff;
+  
+  /* Secondary Greens (Shades) */
+  --secondary-900: #1aa849;
+  --secondary-800: #1db64f;
+  --secondary-700: #20BF55;
+  --secondary-600: #4dcc77;
+  --secondary-500: #7ad999;
+  --secondary-400: #a7e6bb;
+  --secondary-300: #d4f3dd;
+  --secondary-200: #e8f8ee;
+  --secondary-100: #f4fcf7;
+  --secondary-50: #fafeff;
+  
+  /* Accent Colors */
+  --accent-yellow: #FDB92C;
+  --accent-teal: #01BAEF;
   
   /* Success Green */
-  --success-700: #047857;
-  --success-600: #059669;
-  --success-500: #10B981;
-  --success-400: #34D399;
-  --success-100: #D1FAE5;
+  --success-700: #1aa849;
+  --success-600: #20BF55;
+  --success-500: #4dcc77;
+  --success-400: #7ad999;
+  --success-100: #d4f3dd;
   
   /* Warning */
-  --warning-700: #B45309;
-  --warning-600: #D97706;
-  --warning-500: #F59E0B;
-  --warning-100: #FEF3C7;
+  --warning-700: #d99006;
+  --warning-600: #FDB92C;
+  --warning-500: #fdc752;
+  --warning-100: #fef3d5;
   
   /* Error */
   --error-700: #B91C1C;
@@ -46,10 +55,10 @@
   --error-100: #FEE2E2;
   
   /* Info */
-  --info-700: #0369A1;
-  --info-600: #0284C7;
-  --info-500: #0EA5E9;
-  --info-100: #E0F2FE;
+  --info-700: #0a8bc2;
+  --info-600: #01BAEF;
+  --info-500: #34caf5;
+  --info-100: #d4f3fd;
   
   /* Neutrals */
   --neutral-900: #111827;
