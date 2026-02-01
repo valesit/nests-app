@@ -7,22 +7,34 @@ export default function LandingPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const categories = [
-    { name: 'Electrical', description: 'Wiring, lighting, and power solutions.' },
-    { name: 'Plumbing', description: 'Pipes, fixtures, and water systems.' },
-    { name: 'Carpentry', description: 'Custom woodworking and repairs.' },
-    { name: 'Roofing', description: 'New roofs, repairs, and inspections.' },
-    { name: 'Painting', description: 'Interior and exterior painting.' },
+    { 
+      name: 'Electrical', 
+      description: 'Wiring, lighting, and power solutions.',
+      image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=500&fit=crop'
+    },
+    { 
+      name: 'Plumbing', 
+      description: 'Pipes, fixtures, and water systems.',
+      image: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=400&h=500&fit=crop'
+    },
+    { 
+      name: 'Carpentry', 
+      description: 'Custom woodworking and repairs.',
+      image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=400&h=500&fit=crop'
+    },
+    { 
+      name: 'Roofing', 
+      description: 'New roofs, repairs, and inspections.',
+      image: 'https://images.unsplash.com/photo-1632759145351-1d592919f522?w=400&h=500&fit=crop'
+    },
+    { 
+      name: 'Painting', 
+      description: 'Interior and exterior painting.',
+      image: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=500&fit=crop'
+    },
   ];
 
   const quickCategories = ['Flooring', 'Landscaping', 'Carpentry', 'Painting', 'HVAC', 'Roofing', 'Electrical', 'Plumbing'];
-
-  const gradientColors = [
-    ['#d97706', '#92400e'],
-    ['#2563eb', '#1e40af'],
-    ['#059669', '#065f46'],
-    ['#dc2626', '#991b1b'],
-    ['#9333ea', '#6b21a8'],
-  ];
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: 'white', fontFamily: "'Inter', sans-serif" }}>
@@ -86,8 +98,22 @@ export default function LandingPage() {
         position: 'relative', 
         height: '600px', 
         overflow: 'hidden',
-        background: 'linear-gradient(135deg, #0a1628 0%, #1a2a42 50%, #0a1628 100%)'
       }}>
+        {/* Background Image */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: 'url(https://images.unsplash.com/photo-1541123603104-512919d6a96c?w=1920&h=1080&fit=crop)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }} />
+        {/* Overlay */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(to right, rgba(10, 22, 40, 0.85), rgba(10, 22, 40, 0.6))',
+        }} />
+        
         <div style={{ 
           position: 'relative', 
           zIndex: 10, 
@@ -251,11 +277,17 @@ export default function LandingPage() {
                   display: 'block',
                 }}
               >
-                <div style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background: `linear-gradient(135deg, ${gradientColors[index][0]} 0%, ${gradientColors[index][1]} 100%)`,
-                }} />
+                <img 
+                  src={category.image} 
+                  alt={category.name}
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                  }}
+                />
                 <div style={{
                   position: 'absolute',
                   inset: 0,
@@ -289,21 +321,22 @@ export default function LandingPage() {
             gap: '3rem', 
             alignItems: 'center' 
           }}>
-            {/* Image Placeholder */}
+            {/* Image */}
             <div style={{ 
               height: '400px', 
               borderRadius: '0.5rem', 
-              background: 'linear-gradient(135deg, rgba(0,200,150,0.2) 0%, rgba(10,22,40,0.4) 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
+              overflow: 'hidden',
+              position: 'relative',
             }}>
-              <div style={{ textAlign: 'center' }}>
-                <svg style={{ width: '80px', height: '80px', margin: '0 auto 1rem', color: 'rgba(0,200,150,0.5)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-                <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.875rem' }}>Professional contractors</p>
-              </div>
+              <img 
+                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop"
+                alt="Contractors working"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                }}
+              />
             </div>
 
             {/* Content */}
@@ -387,21 +420,21 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Image Placeholder */}
+            {/* Image */}
             <div style={{
               height: '400px',
               borderRadius: '0.5rem',
-              background: 'linear-gradient(135deg, #e8f7f3 0%, rgba(0,200,150,0.2) 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
+              overflow: 'hidden',
             }}>
-              <div style={{ textAlign: 'center' }}>
-                <svg style={{ width: '80px', height: '80px', margin: '0 auto 1rem', color: 'rgba(0,200,150,0.5)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                </svg>
-                <p style={{ color: 'rgba(10,22,40,0.6)', fontSize: '0.875rem' }}>Review plans together</p>
-              </div>
+              <img 
+                src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=600&fit=crop"
+                alt="Contractors reviewing plans"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                }}
+              />
             </div>
           </div>
         </div>
@@ -411,9 +444,24 @@ export default function LandingPage() {
       <section style={{ 
         position: 'relative', 
         padding: '6rem 1.5rem', 
-        background: 'linear-gradient(135deg, #0a1628 0%, #1a2a42 50%, #0a1628 100%)'
+        overflow: 'hidden',
       }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', textAlign: 'center' }}>
+        {/* Background Image */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: 'url(https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&h=800&fit=crop)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }} />
+        {/* Overlay */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundColor: 'rgba(10, 22, 40, 0.85)',
+        }} />
+        
+        <div style={{ position: 'relative', zIndex: 10, maxWidth: '1280px', margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 300, color: 'white', marginBottom: '1rem' }}>
             Ready to Start Your Project?
           </h2>
