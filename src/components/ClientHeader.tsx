@@ -141,16 +141,30 @@ export function ClientHeader() {
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors focus:outline-none focus:ring-2 focus:ring-white/50"
+                  className="flex items-center gap-3 hover:opacity-90 transition-opacity focus:outline-none"
                 >
-                  <div className="w-8 h-8 rounded-full bg-[#00c896] flex items-center justify-center text-white font-semibold text-sm">
-                    {profile?.full_name?.charAt(0)?.toUpperCase() || 'U'}
+                  <div className="w-10 h-10 rounded-full bg-gray-400 overflow-hidden flex items-center justify-center border-2 border-gray-300">
+                    {profile?.avatar_url ? (
+                      <Image
+                        src={profile.avatar_url}
+                        alt={profile.full_name || 'User'}
+                        width={40}
+                        height={40}
+                        className="object-cover w-full h-full"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-gray-400 to-gray-500 flex items-center justify-center">
+                        <span className="text-white font-semibold text-sm">
+                          {profile?.full_name?.charAt(0)?.toUpperCase() || 'U'}
+                        </span>
+                      </div>
+                    )}
                   </div>
-                  <span className="text-white font-medium text-sm max-w-[100px] truncate">
-                    {profile?.full_name?.split(' ')[0] || 'User'}
+                  <span className="text-white font-medium">
+                    {profile?.full_name || 'User'}
                   </span>
                   <svg
-                    className={`w-4 h-4 text-white transition-transform ${userDropdownOpen ? 'rotate-180' : ''}`}
+                    className={`w-4 h-4 text-[#00c896] transition-transform ${userDropdownOpen ? 'rotate-180' : ''}`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
