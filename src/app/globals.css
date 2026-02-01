@@ -1,15 +1,21 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-:root {
+/* NESTS Theme Configuration for Tailwind v4 */
+@theme inline {
+  /* Primary Colors */
   --color-primary: #00c896;
   --color-primary-dark: #00b085;
+  --color-primary-light: #e8f7f3;
+  
+  /* Navy Colors */
   --color-navy: #0a1628;
   --color-navy-light: #1a2a42;
+  
+  /* Font Family */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
 }
 
 * {
@@ -20,7 +26,7 @@
 
 html,
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

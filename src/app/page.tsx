@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import React, { useState } from 'react';
 import Link from 'next/link';
 
 // ============================================
@@ -65,14 +64,7 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <section className="relative h-[600px] overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/hero-interior.jpg"
-            alt="Modern interior"
-            fill
-            className="object-cover"
-            priority
-          />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#1a2a42] to-[#0a1628]">
           <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/70 to-[#0a1628]/40" />
         </div>
         
@@ -148,29 +140,33 @@ export default function LandingPage() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            {categories.map((category, index) => (
-              <Link
-                key={category.name}
-                href={`/categories/${category.name.toLowerCase()}`}
-                className="group relative overflow-hidden rounded-lg aspect-[4/5]"
-              >
-                <Image
-                  src={category.image}
-                  alt={category.name}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <h3 className={`text-lg font-medium mb-1 ${index === 1 ? 'text-[#00c896]' : 'text-white'}`}>
-                    {category.name}
-                  </h3>
-                  <p className="text-white/80 text-xs leading-relaxed">
-                    {category.description}
-                  </p>
-                </div>
-              </Link>
-            ))}
+            {categories.map((category, index) => {
+              const gradients = [
+                'from-amber-600 to-amber-800',
+                'from-blue-600 to-blue-800',
+                'from-emerald-600 to-emerald-800',
+                'from-red-600 to-red-800',
+                'from-purple-600 to-purple-800',
+              ];
+              return (
+                <Link
+                  key={category.name}
+                  href={`/categories/${category.name.toLowerCase()}`}
+                  className="group relative overflow-hidden rounded-lg aspect-[4/5]"
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-br ${gradients[index]} group-hover:scale-105 transition-transform duration-300`} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <h3 className={`text-lg font-medium mb-1 ${index === 1 ? 'text-[#00c896]' : 'text-white'}`}>
+                      {category.name}
+                    </h3>
+                    <p className="text-white/80 text-xs leading-relaxed">
+                      {category.description}
+                    </p>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -179,14 +175,14 @@ export default function LandingPage() {
       <section className="py-16 bg-[#0a1628]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Image */}
-            <div className="relative h-[500px] rounded-lg overflow-hidden">
-              <Image
-                src="/images/contractors-meeting.jpg"
-                alt="Contractors meeting"
-                fill
-                className="object-cover"
-              />
+            {/* Image Placeholder */}
+            <div className="relative h-[500px] rounded-lg overflow-hidden bg-gradient-to-br from-[#00c896]/20 to-[#0a1628]/40 flex items-center justify-center">
+              <div className="text-center">
+                <svg className="w-24 h-24 mx-auto text-[#00c896]/50 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <p className="text-white/60 text-sm">Professional contractors</p>
+              </div>
             </div>
 
             {/* Content */}
@@ -357,14 +353,14 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Image */}
-            <div className="relative h-[450px] rounded-lg overflow-hidden">
-              <Image
-                src="/images/contractors-working.jpg"
-                alt="Contractors reviewing plans"
-                fill
-                className="object-cover"
-              />
+            {/* Image Placeholder */}
+            <div className="relative h-[450px] rounded-lg overflow-hidden bg-gradient-to-br from-[#e8f7f3] to-[#00c896]/20 flex items-center justify-center">
+              <div className="text-center">
+                <svg className="w-24 h-24 mx-auto text-[#00c896]/50 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                </svg>
+                <p className="text-[#0a1628]/60 text-sm">Review plans together</p>
+              </div>
             </div>
           </div>
         </div>
@@ -372,14 +368,8 @@ export default function LandingPage() {
 
       {/* Ready to Start Your Project CTA */}
       <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/construction-site.jpg"
-            alt="Construction site"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-[#0a1628]/80" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#1a2a42] to-[#0a1628]">
+          <div className="absolute inset-0 bg-[#0a1628]/40" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
