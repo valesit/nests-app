@@ -46,16 +46,10 @@ export default function LandingPage() {
             <span className="text-white text-xl font-bold tracking-wide">NESTS</span>
           </Link>
           <div className="flex items-center gap-3">
-            <Link 
-              href="/signin" 
-              className="px-6 py-2 border border-white text-white text-sm font-medium rounded hover:bg-white hover:text-[#0a1628] transition-colors"
-            >
+            <Link href="/signin" className="btn-outline-white">
               Sign In
             </Link>
-            <Link 
-              href="/join" 
-              className="px-6 py-2 border border-white text-white text-sm font-medium rounded hover:bg-white hover:text-[#0a1628] transition-colors"
-            >
+            <Link href="/join" className="btn-outline-white">
               Join
             </Link>
           </div>
@@ -76,13 +70,13 @@ export default function LandingPage() {
           
           {/* Search Bar */}
           <div className="w-full max-w-2xl mb-6">
-            <div className="flex items-center bg-white rounded-lg overflow-hidden shadow-lg">
+            <div className="search-container">
               <input
                 type="text"
                 placeholder="Search for any service ..."
-                className="flex-1 px-6 py-4 text-gray-700 text-base outline-none"
+                className="search-input"
               />
-              <button className="px-6 py-4 text-gray-400 hover:text-[#00c896] transition-colors">
+              <button className="search-button">
                 <SearchIcon />
               </button>
             </div>
@@ -94,7 +88,7 @@ export default function LandingPage() {
               <Link
                 key={cat}
                 href={`/categories/${cat.toLowerCase()}`}
-                className="px-4 py-1.5 bg-white/20 backdrop-blur-sm text-white text-sm rounded-full hover:bg-white/30 transition-colors"
+                className="category-pill"
               >
                 {cat}
               </Link>
@@ -102,10 +96,7 @@ export default function LandingPage() {
           </div>
 
           {/* Become a Contractor Button */}
-          <Link
-            href="/become-contractor"
-            className="px-8 py-3 bg-white text-[#0a1628] text-sm font-medium rounded hover:bg-gray-100 transition-colors"
-          >
+          <Link href="/become-contractor" className="btn-white">
             Become a Contractor
           </Link>
 
@@ -131,36 +122,45 @@ export default function LandingPage() {
             <h2 className="text-3xl md:text-4xl font-light text-[#0a1628]">
               Explore Top Service Categories
             </h2>
-            <Link
-              href="/categories"
-              className="px-6 py-2.5 bg-[#00c896] text-white text-sm font-medium rounded hover:bg-[#00b085] transition-colors"
-            >
+            <Link href="/categories" className="btn-primary">
               View All Categories
             </Link>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {categories.map((category, index) => {
-              const gradients = [
-                'from-amber-600 to-amber-800',
-                'from-blue-600 to-blue-800',
-                'from-emerald-600 to-emerald-800',
-                'from-red-600 to-red-800',
-                'from-purple-600 to-purple-800',
+              const gradientStyles = [
+                'linear-gradient(135deg, #d97706 0%, #92400e 100%)',
+                'linear-gradient(135deg, #2563eb 0%, #1e40af 100%)',
+                'linear-gradient(135deg, #059669 0%, #065f46 100%)',
+                'linear-gradient(135deg, #dc2626 0%, #991b1b 100%)',
+                'linear-gradient(135deg, #9333ea 0%, #6b21a8 100%)',
               ];
               return (
                 <Link
                   key={category.name}
                   href={`/categories/${category.name.toLowerCase()}`}
-                  className="group relative overflow-hidden rounded-lg aspect-[4/5]"
+                  className="category-card"
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${gradients[index]} group-hover:scale-105 transition-transform duration-300`} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 className={`text-lg font-medium mb-1 ${index === 1 ? 'text-[#00c896]' : 'text-white'}`}>
+                  <div 
+                    className="category-card-gradient" 
+                    style={{ background: gradientStyles[index] }}
+                  />
+                  <div className="category-card-overlay" />
+                  <div className="category-card-content">
+                    <h3 style={{ 
+                      fontSize: '1.125rem', 
+                      fontWeight: 500, 
+                      marginBottom: '0.25rem',
+                      color: index === 1 ? '#00c896' : 'white'
+                    }}>
                       {category.name}
                     </h3>
-                    <p className="text-white/80 text-xs leading-relaxed">
+                    <p style={{ 
+                      color: 'rgba(255, 255, 255, 0.8)', 
+                      fontSize: '0.75rem', 
+                      lineHeight: 1.5 
+                    }}>
                       {category.description}
                     </p>
                   </div>
@@ -172,22 +172,31 @@ export default function LandingPage() {
       </section>
 
       {/* Everything You Need Section */}
-      <section className="py-16 bg-[#0a1628]">
+      <section className="py-16 bg-navy">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Image Placeholder */}
-            <div className="relative h-[500px] rounded-lg overflow-hidden bg-gradient-to-br from-[#00c896]/20 to-[#0a1628]/40 flex items-center justify-center">
-              <div className="text-center">
-                <svg className="w-24 h-24 mx-auto text-[#00c896]/50 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div style={{ 
+              position: 'relative', 
+              height: '500px', 
+              borderRadius: '0.5rem', 
+              overflow: 'hidden',
+              background: 'linear-gradient(135deg, rgba(0, 200, 150, 0.2) 0%, rgba(10, 22, 40, 0.4) 100%)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              <div style={{ textAlign: 'center' }}>
+                <svg style={{ width: '6rem', height: '6rem', margin: '0 auto', color: 'rgba(0, 200, 150, 0.5)', marginBottom: '1rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
-                <p className="text-white/60 text-sm">Professional contractors</p>
+                <p style={{ color: 'rgba(255, 255, 255, 0.6)', fontSize: '0.875rem' }}>Professional contractors</p>
               </div>
             </div>
 
             {/* Content */}
             <div>
-              <h2 className="text-3xl md:text-4xl font-light text-white mb-10 leading-tight">
+              <h2 style={{ fontSize: '2.25rem', fontWeight: 300, color: 'white', marginBottom: '2.5rem', lineHeight: 1.2 }}>
                 Everything You Need to<br />
                 Hire, Track, and Pay with Ease
               </h2>
@@ -195,44 +204,44 @@ export default function LandingPage() {
               <div className="grid grid-cols-2 gap-8">
                 {/* Top Rated Vendors */}
                 <div>
-                  <div className="w-14 h-14 bg-[#00c896] rounded-lg flex items-center justify-center mb-4">
-                    <StarIcon className="w-7 h-7 text-white" />
+                  <div className="feature-icon">
+                    <StarIcon style={{ width: '1.75rem', height: '1.75rem', color: 'white' }} />
                   </div>
-                  <h3 className="text-white text-lg font-medium mb-2">Top Rated Vendors</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <h3 style={{ color: 'white', fontSize: '1.125rem', fontWeight: 500, marginBottom: '0.5rem' }}>Top Rated Vendors</h3>
+                  <p style={{ color: '#9ca3af', fontSize: '0.875rem', lineHeight: 1.6 }}>
                     Discover verified and highly rated professionals across all services.
                   </p>
                 </div>
 
                 {/* Find the Vendors */}
                 <div>
-                  <div className="w-14 h-14 bg-[#00c896] rounded-lg flex items-center justify-center mb-4">
-                    <PlusIcon className="w-7 h-7 text-white" />
+                  <div className="feature-icon">
+                    <PlusIcon style={{ width: '1.75rem', height: '1.75rem', color: 'white' }} />
                   </div>
-                  <h3 className="text-white text-lg font-medium mb-2">Find the Vendors</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <h3 style={{ color: 'white', fontSize: '1.125rem', fontWeight: 500, marginBottom: '0.5rem' }}>Find the Vendors</h3>
+                  <p style={{ color: '#9ca3af', fontSize: '0.875rem', lineHeight: 1.6 }}>
                     Easily browse and connect with the right experts for your project needs.
                   </p>
                 </div>
 
                 {/* Track Your Project Progress */}
                 <div>
-                  <div className="w-14 h-14 bg-[#00c896] rounded-lg flex items-center justify-center mb-4">
-                    <CheckCircleIcon className="w-7 h-7 text-white" />
+                  <div className="feature-icon">
+                    <CheckCircleIcon style={{ width: '1.75rem', height: '1.75rem', color: 'white' }} />
                   </div>
-                  <h3 className="text-white text-lg font-medium mb-2">Track Your Project Progress</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <h3 style={{ color: 'white', fontSize: '1.125rem', fontWeight: 500, marginBottom: '0.5rem' }}>Track Your Project Progress</h3>
+                  <p style={{ color: '#9ca3af', fontSize: '0.875rem', lineHeight: 1.6 }}>
                     Stay updated in real time with tools that keep your Project on schedule.
                   </p>
                 </div>
 
                 {/* Secured Payment */}
                 <div>
-                  <div className="w-14 h-14 bg-[#00c896] rounded-lg flex items-center justify-center mb-4">
-                    <DollarIcon className="w-7 h-7 text-white" />
+                  <div className="feature-icon">
+                    <DollarIcon style={{ width: '1.75rem', height: '1.75rem', color: 'white' }} />
                   </div>
-                  <h3 className="text-white text-lg font-medium mb-2">Secured Payment</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <h3 style={{ color: 'white', fontSize: '1.125rem', fontWeight: 500, marginBottom: '0.5rem' }}>Secured Payment</h3>
+                  <p style={{ color: '#9ca3af', fontSize: '0.875rem', lineHeight: 1.6 }}>
                     Your funds are safe until you're fully satisfied.
                   </p>
                 </div>
@@ -248,29 +257,46 @@ export default function LandingPage() {
           <div className="grid lg:grid-cols-3 gap-8 items-start">
             {/* Title Column */}
             <div>
-              <h2 className="text-3xl md:text-4xl font-light text-[#0a1628] mb-6">
+              <h2 className="text-navy" style={{ fontSize: '2.25rem', fontWeight: 300, marginBottom: '1.5rem', lineHeight: 1.2 }}>
                 What Our<br />
                 Customers Say
               </h2>
-              <div className="flex items-center gap-3">
-                <Link
-                  href="/reviews"
-                  className="px-6 py-2.5 bg-[#00c896] text-white text-sm font-medium rounded hover:bg-[#00b085] transition-colors"
-                >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <Link href="/reviews" className="btn-primary">
                   View All Reviews
                 </Link>
-                <div className="flex gap-2">
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
                   <button 
                     onClick={() => setCurrentTestimonial(Math.max(0, currentTestimonial - 1))}
-                    className="w-10 h-10 rounded-full border-2 border-[#0a1628] flex items-center justify-center hover:bg-[#0a1628] hover:text-white transition-colors"
+                    style={{
+                      width: '2.5rem',
+                      height: '2.5rem',
+                      borderRadius: '9999px',
+                      border: '2px solid #0a1628',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      background: 'transparent',
+                      cursor: 'pointer'
+                    }}
                   >
-                    <ChevronLeftIcon className="w-5 h-5" />
+                    <ChevronLeftIcon style={{ width: '1.25rem', height: '1.25rem' }} />
                   </button>
                   <button 
                     onClick={() => setCurrentTestimonial(Math.min(testimonials.length - 1, currentTestimonial + 1))}
-                    className="w-10 h-10 rounded-full border-2 border-[#0a1628] flex items-center justify-center hover:bg-[#0a1628] hover:text-white transition-colors"
+                    style={{
+                      width: '2.5rem',
+                      height: '2.5rem',
+                      borderRadius: '9999px',
+                      border: '2px solid #0a1628',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      background: 'transparent',
+                      cursor: 'pointer'
+                    }}
                   >
-                    <ChevronRightIcon className="w-5 h-5" />
+                    <ChevronRightIcon style={{ width: '1.25rem', height: '1.25rem' }} />
                   </button>
                 </div>
               </div>
@@ -278,20 +304,28 @@ export default function LandingPage() {
 
             {/* Testimonial Cards */}
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white">
-                <p className="text-gray-600 text-sm leading-relaxed mb-6">
+              <div key={index} style={{ backgroundColor: 'white' }}>
+                <p style={{ color: '#4b5563', fontSize: '0.875rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
                   {testimonial.text}
                 </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center">
-                    <span className="text-white text-sm font-medium">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <div style={{
+                    width: '2.5rem',
+                    height: '2.5rem',
+                    borderRadius: '9999px',
+                    backgroundColor: '#f59e0b',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    <span style={{ color: 'white', fontSize: '0.875rem', fontWeight: 500 }}>
                       {testimonial.name.charAt(0)}
                     </span>
                   </div>
-                  <span className="text-[#0a1628] font-medium">{testimonial.name}</span>
-                  <div className="flex gap-0.5 ml-2">
+                  <span className="text-navy" style={{ fontWeight: 500 }}>{testimonial.name}</span>
+                  <div style={{ display: 'flex', gap: '2px', marginLeft: '0.5rem' }}>
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <StarFilledIcon key={i} className="w-4 h-4 text-amber-400" />
+                      <StarFilledIcon key={i} style={{ width: '1rem', height: '1rem', color: '#fbbf24' }} />
                     ))}
                   </div>
                 </div>
@@ -307,45 +341,45 @@ export default function LandingPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Content */}
             <div>
-              <h2 className="text-3xl md:text-4xl font-light text-[#0a1628] mb-10">
+              <h2 className="text-navy" style={{ fontSize: '2.25rem', fontWeight: 300, marginBottom: '2.5rem' }}>
                 How it Works
               </h2>
 
-              <div className="space-y-8">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                 {/* Step 1 */}
-                <div className="flex gap-4">
-                  <div className="w-14 h-14 bg-[#e8f7f3] rounded-lg flex items-center justify-center flex-shrink-0">
-                    <DocumentIcon className="w-7 h-7 text-[#00c896]" />
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                  <div className="feature-icon-light">
+                    <DocumentIcon className="text-primary" style={{ width: '1.75rem', height: '1.75rem' }} />
                   </div>
                   <div>
-                    <h3 className="text-[#00c896] text-lg font-medium mb-1">Post your project</h3>
-                    <p className="text-gray-600 text-sm">
+                    <h3 className="text-primary" style={{ fontSize: '1.125rem', fontWeight: 500, marginBottom: '0.25rem' }}>Post your project</h3>
+                    <p style={{ color: '#4b5563', fontSize: '0.875rem' }}>
                       Describe your construction needs in detail. It's quick, easy, and free.
                     </p>
                   </div>
                 </div>
 
                 {/* Step 2 */}
-                <div className="flex gap-4">
-                  <div className="w-14 h-14 bg-[#e8f7f3] rounded-lg flex items-center justify-center flex-shrink-0">
-                    <HandshakeIcon className="w-7 h-7 text-[#00c896]" />
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                  <div className="feature-icon-light">
+                    <HandshakeIcon className="text-primary" style={{ width: '1.75rem', height: '1.75rem' }} />
                   </div>
                   <div>
-                    <h3 className="text-[#00c896] text-lg font-medium mb-1">Get Matched & Receive Bids</h3>
-                    <p className="text-gray-600 text-sm">
+                    <h3 className="text-primary" style={{ fontSize: '1.125rem', fontWeight: 500, marginBottom: '0.25rem' }}>Get Matched & Receive Bids</h3>
+                    <p style={{ color: '#4b5563', fontSize: '0.875rem' }}>
                       We connect you with qualified contractors. Compare bids and profiles.
                     </p>
                   </div>
                 </div>
 
                 {/* Step 3 */}
-                <div className="flex gap-4">
-                  <div className="w-14 h-14 bg-[#e8f7f3] rounded-lg flex items-center justify-center flex-shrink-0">
-                    <FolderIcon className="w-7 h-7 text-[#00c896]" />
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                  <div className="feature-icon-light">
+                    <FolderIcon className="text-primary" style={{ width: '1.75rem', height: '1.75rem' }} />
                   </div>
                   <div>
-                    <h3 className="text-[#00c896] text-lg font-medium mb-1">Hire & Get Work Done</h3>
-                    <p className="text-gray-600 text-sm">
+                    <h3 className="text-primary" style={{ fontSize: '1.125rem', fontWeight: 500, marginBottom: '0.25rem' }}>Hire & Get Work Done</h3>
+                    <p style={{ color: '#4b5563', fontSize: '0.875rem' }}>
                       Choose the best fit, hire securely, and watch your project come to life.
                     </p>
                   </div>
@@ -354,12 +388,21 @@ export default function LandingPage() {
             </div>
 
             {/* Image Placeholder */}
-            <div className="relative h-[450px] rounded-lg overflow-hidden bg-gradient-to-br from-[#e8f7f3] to-[#00c896]/20 flex items-center justify-center">
-              <div className="text-center">
-                <svg className="w-24 h-24 mx-auto text-[#00c896]/50 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div style={{
+              position: 'relative',
+              height: '450px',
+              borderRadius: '0.5rem',
+              overflow: 'hidden',
+              background: 'linear-gradient(135deg, #e8f7f3 0%, rgba(0, 200, 150, 0.2) 100%)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              <div style={{ textAlign: 'center' }}>
+                <svg style={{ width: '6rem', height: '6rem', margin: '0 auto', color: 'rgba(0, 200, 150, 0.5)', marginBottom: '1rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                 </svg>
-                <p className="text-[#0a1628]/60 text-sm">Review plans together</p>
+                <p style={{ color: 'rgba(10, 22, 40, 0.6)', fontSize: '0.875rem' }}>Review plans together</p>
               </div>
             </div>
           </div>
@@ -367,22 +410,19 @@ export default function LandingPage() {
       </section>
 
       {/* Ready to Start Your Project CTA */}
-      <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#1a2a42] to-[#0a1628]">
-          <div className="absolute inset-0 bg-[#0a1628]/40" />
+      <section style={{ position: 'relative', padding: '6rem 0', overflow: 'hidden' }}>
+        <div className="bg-navy-gradient" style={{ position: 'absolute', inset: 0 }}>
+          <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(10, 22, 40, 0.4)' }} />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-white mb-4">
+        <div style={{ position: 'relative', zIndex: 10, maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem', textAlign: 'center' }}>
+          <h2 style={{ fontSize: '2.5rem', fontWeight: 300, color: 'white', marginBottom: '1rem' }}>
             Ready to Start Your Project?
           </h2>
-          <p className="text-gray-300 text-lg mb-8">
+          <p style={{ color: '#d1d5db', fontSize: '1.125rem', marginBottom: '2rem' }}>
             Join thousands of satisfied clients and contractors today.
           </p>
-          <Link
-            href="/signup"
-            className="inline-block px-8 py-3 bg-white text-[#0a1628] text-sm font-medium rounded hover:bg-gray-100 transition-colors"
-          >
+          <Link href="/signup" className="btn-white">
             Sign Up Now
           </Link>
         </div>
