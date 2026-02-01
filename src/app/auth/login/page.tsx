@@ -68,7 +68,7 @@ function LoginForm() {
       {/* Right Side - Form */}
       <div style={{
         flex: 1,
-        backgroundColor: '#14629D',
+        backgroundColor: '#05396c',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -137,8 +137,8 @@ function LoginForm() {
                   style={{
                     width: '100%',
                     padding: '0.875rem 1rem',
-                    backgroundColor: '#0d4a7a',
-                    border: '1px solid #1a5a8e',
+                    backgroundColor: '#042d56',
+                    border: '1px solid #064578',
                     borderRadius: '0.375rem',
                     color: 'white',
                     fontSize: '0.875rem',
@@ -164,8 +164,8 @@ function LoginForm() {
                   style={{
                     width: '100%',
                     padding: '0.875rem 1rem',
-                    backgroundColor: '#0d4a7a',
-                    border: '1px solid #1a5a8e',
+                    backgroundColor: '#042d56',
+                    border: '1px solid #064578',
                     borderRadius: '0.375rem',
                     color: 'white',
                     fontSize: '0.875rem',
@@ -183,7 +183,7 @@ function LoginForm() {
                 width: '100%',
                 padding: '0.875rem',
                 backgroundColor: '#00c896',
-                color: '#14629D',
+                color: '#05396c',
                 fontSize: '1rem',
                 fontWeight: 600,
                 border: 'none',
@@ -253,12 +253,12 @@ export default function LoginPage() {
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'center',
-        backgroundColor: '#14629D'
+        backgroundColor: '#05396c'
       }}>
         <div style={{
           width: '48px',
           height: '48px',
-          border: '3px solid #0d4a7a',
+          border: '3px solid #042d56',
           borderTopColor: '#00c896',
           borderRadius: '50%',
           animation: 'spin 1s linear infinite',
