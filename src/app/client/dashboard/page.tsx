@@ -11,7 +11,13 @@ interface ProjectWithQuotes {
   budget: number | null;
   deadline: string | null;
   created_at: string;
-  quotes?: { id: string; status: string; total_amount: number | null; created_at: string }[];
+  quotes?: { 
+    id: string; 
+    status: string; 
+    total_amount: number | null; 
+    created_at: string;
+    vendor_profiles?: { business_name: string };
+  }[];
   vendor_profiles?: { business_name: string };
 }
 
