@@ -376,66 +376,263 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* How it Works */}
-      <section style={{ padding: '4rem 1.5rem', backgroundColor: 'white' }}>
+      {/* What Our Customers Say */}
+      <section style={{ padding: '4rem 1.5rem', backgroundColor: '#05396c' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
             gap: '3rem', 
-            alignItems: 'center' 
+            alignItems: 'start' 
           }}>
-            {/* Content */}
+            {/* Left Column - Title and Navigation */}
             <div>
-              <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.25rem)', fontWeight: 300, color: '#0a1628', marginBottom: '2.5rem' }}>
-                How it Works
+              <h2 style={{ 
+                fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', 
+                fontWeight: 400, 
+                color: 'white', 
+                marginBottom: '2rem',
+                fontStyle: 'italic',
+                lineHeight: 1.3
+              }}>
+                What Our<br />Customers Say
               </h2>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                {[
-                  { icon: '📋', title: 'Post your project', desc: "Describe your construction needs in detail. It's quick, easy, and free." },
-                  { icon: '🤝', title: 'Get Matched & Receive Bids', desc: 'We connect you with qualified contractors. Compare bids and profiles.' },
-                  { icon: '✅', title: 'Hire & Get Work Done', desc: 'Choose the best fit, hire securely, and watch your project come to life.' },
-                ].map((step, i) => (
-                  <div key={i} style={{ display: 'flex', gap: '1rem' }}>
-                    <div style={{
-                      width: '56px',
-                      height: '56px',
-                      backgroundColor: '#e8f7f3',
-                      borderRadius: '0.5rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0,
-                      fontSize: '1.5rem'
-                    }}>
-                      {step.icon}
-                    </div>
-                    <div>
-                      <h3 style={{ color: '#00c896', fontSize: '1.125rem', fontWeight: 500, marginBottom: '0.25rem' }}>{step.title}</h3>
-                      <p style={{ color: '#4b5563', fontSize: '0.875rem' }}>{step.desc}</p>
-                    </div>
-                  </div>
-                ))}
+              
+              <Link href="#" style={{
+                display: 'inline-block',
+                padding: '0.75rem 1.5rem',
+                backgroundColor: '#00c896',
+                color: 'white',
+                fontSize: '0.875rem',
+                fontWeight: 500,
+                borderRadius: '0.375rem',
+                textDecoration: 'none',
+                marginBottom: '1.5rem',
+              }}>
+                View All Reviews
+              </Link>
+              
+              {/* Navigation Arrows */}
+              <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1rem' }}>
+                <button style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  border: '1px solid rgba(255,255,255,0.3)',
+                  backgroundColor: 'transparent',
+                  color: 'white',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1rem'
+                }}>
+                  ←
+                </button>
+                <button style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  border: '1px solid rgba(255,255,255,0.3)',
+                  backgroundColor: 'transparent',
+                  color: 'white',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1rem'
+                }}>
+                  →
+                </button>
               </div>
             </div>
 
-            {/* Image */}
-            <div style={{
-              height: '400px',
-              borderRadius: '0.5rem',
-              overflow: 'hidden',
-            }}>
-              <img 
-                src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=600&fit=crop"
-                alt="Contractors reviewing plans"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                }}
-              />
+            {/* Testimonial 1 */}
+            <div>
+              <p style={{ 
+                color: 'rgba(255,255,255,0.85)', 
+                fontSize: '0.875rem', 
+                lineHeight: 1.7,
+                marginBottom: '1.5rem'
+              }}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <div style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  backgroundColor: '#4b5563',
+                  overflow: 'hidden'
+                }}>
+                  <img 
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
+                    alt="Jane Doe"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                </div>
+                <span style={{ color: 'white', fontWeight: 500, fontSize: '0.9rem' }}>Jane Doe</span>
+                <div style={{ display: 'flex', gap: '2px', marginLeft: '0.5rem' }}>
+                  {[1,2,3,4,5].map((star) => (
+                    <span key={star} style={{ color: '#fbbf24', fontSize: '0.875rem' }}>★</span>
+                  ))}
+                </div>
+              </div>
             </div>
+
+            {/* Testimonial 2 */}
+            <div>
+              <p style={{ 
+                color: 'rgba(255,255,255,0.85)', 
+                fontSize: '0.875rem', 
+                lineHeight: 1.7,
+                marginBottom: '1.5rem'
+              }}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <div style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  backgroundColor: '#4b5563',
+                  overflow: 'hidden'
+                }}>
+                  <img 
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
+                    alt="Jane Doe"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                </div>
+                <span style={{ color: 'white', fontWeight: 500, fontSize: '0.9rem' }}>Jane Doe</span>
+                <div style={{ display: 'flex', gap: '2px', marginLeft: '0.5rem' }}>
+                  {[1,2,3,4,5].map((star) => (
+                    <span key={star} style={{ color: '#fbbf24', fontSize: '0.875rem' }}>★</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How it Works */}
+      <section style={{ position: 'relative', overflow: 'hidden' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+          {/* Left Content - White Background */}
+          <div style={{ 
+            flex: '1 1 50%', 
+            minWidth: '300px',
+            padding: '4rem 3rem',
+            backgroundColor: 'white'
+          }}>
+            <h2 style={{ 
+              fontSize: 'clamp(1.5rem, 4vw, 2.25rem)', 
+              fontWeight: 300, 
+              color: '#05396c', 
+              marginBottom: '3rem' 
+            }}>
+              How it Works
+            </h2>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+              {/* Step 1 - Post your project */}
+              <div style={{ display: 'flex', gap: '1rem' }}>
+                <div style={{
+                  width: '56px',
+                  height: '56px',
+                  backgroundColor: '#05396c',
+                  borderRadius: '0.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+                    <rect x="4" y="2" width="16" height="20" rx="2" />
+                    <line x1="8" y1="6" x2="16" y2="6" />
+                    <line x1="8" y1="10" x2="16" y2="10" />
+                    <line x1="8" y1="14" x2="12" y2="14" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 style={{ color: '#00c896', fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.25rem' }}>Post your project</h3>
+                  <p style={{ color: '#4b5563', fontSize: '0.875rem', lineHeight: 1.5 }}>Describe your construction needs in detail. It&apos;s quick, easy, and free.</p>
+                </div>
+              </div>
+
+              {/* Step 2 - Get Matched & Receive Bids */}
+              <div style={{ display: 'flex', gap: '1rem' }}>
+                <div style={{
+                  width: '56px',
+                  height: '56px',
+                  backgroundColor: '#05396c',
+                  borderRadius: '0.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 style={{ color: '#00c896', fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.25rem' }}>Get Matched & Receive Bids</h3>
+                  <p style={{ color: '#4b5563', fontSize: '0.875rem', lineHeight: 1.5 }}>We connect you with qualified contractors. Compare bids and profiles.</p>
+                </div>
+              </div>
+
+              {/* Step 3 - Hire & Get Work Done */}
+              <div style={{ display: 'flex', gap: '1rem' }}>
+                <div style={{
+                  width: '56px',
+                  height: '56px',
+                  backgroundColor: '#05396c',
+                  borderRadius: '0.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10 9 9 9 8 9" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 style={{ color: '#00c896', fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.25rem' }}>Hire & Get Work Done</h3>
+                  <p style={{ color: '#4b5563', fontSize: '0.875rem', lineHeight: 1.5 }}>Choose the best fit, hire securely, and watch your project come to life.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Image - Dark Blue Background */}
+          <div style={{ 
+            flex: '1 1 50%', 
+            minWidth: '300px',
+            backgroundColor: '#05396c',
+            position: 'relative',
+            minHeight: '500px'
+          }}>
+            <img 
+              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop"
+              alt="Construction workers reviewing plans"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                position: 'absolute',
+                inset: 0,
+              }}
+            />
           </div>
         </div>
       </section>
