@@ -1,251 +1,173 @@
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 
-export default function HomePage() {
+// ============================================
+// NESTS Landing Page - Complete Implementation
+// ============================================
+
+export default function LandingPage() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  const categories = [
+    { name: 'Electrical', description: 'Wiring, lighting, and power solutions.', image: '/images/electrical.jpg' },
+    { name: 'Plumbing', description: 'We connect you with qualified contractors. Compare bids and profiles.', image: '/images/plumbing.jpg' },
+    { name: 'Carpentry', description: 'Custom woodworking, framing, and repairs.', image: '/images/carpentry.jpg' },
+    { name: 'Roofing', description: 'New roofs, repairs, and inspections.', image: '/images/roofing.jpg' },
+    { name: 'Painting', description: 'Interior and exterior painting services.', image: '/images/painting.jpg' },
+  ];
+
+  const testimonials = [
+    {
+      name: 'Jane Doe',
+      rating: 5,
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    },
+    {
+      name: 'Jane Doe',
+      rating: 5,
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    },
+  ];
+
+  const quickCategories = ['Flooring', 'Landscaping', 'Carpentry', 'Painting', 'HVAC', 'Roofing', 'Electrical', 'Plumbing'];
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="absolute top-0 left-0 right-0 z-50 px-6 py-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-10 h-10 relative">
+              <AfricaLogo />
+            </div>
+            <span className="text-white text-xl font-bold tracking-wide">NESTS</span>
+          </Link>
+          <div className="flex items-center gap-3">
+            <Link 
+              href="/signin" 
+              className="px-6 py-2 border border-white text-white text-sm font-medium rounded hover:bg-white hover:text-[#0a1628] transition-colors"
+            >
+              Sign In
+            </Link>
+            <Link 
+              href="/join" 
+              className="px-6 py-2 border border-white text-white text-sm font-medium rounded hover:bg-white hover:text-[#0a1628] transition-colors"
+            >
+              Join
+            </Link>
+          </div>
+        </div>
+      </header>
+
       {/* Hero Section */}
-      <section className="relative min-h-[600px] flex items-center justify-center bg-gradient-to-br from-[#0B4F6C] via-[#01BAEF] to-[#20BF55] overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }} />
+      <section className="relative h-[600px] overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero-interior.jpg"
+            alt="Modern interior"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/70 to-[#0a1628]/40" />
         </div>
         
-        <div className="relative z-10 text-center px-6 py-24">
-          <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6 max-w-4xl mx-auto leading-tight">
-            Build Your Dream Home<br />in Zimbabwe
+        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4 pt-16">
+          <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-light mb-8 leading-tight">
+            Find the Right Contractor<br />
+            for Your Project
           </h1>
           
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Connect with trusted local contractors, manage your project remotely, 
-            and watch your dream home come to life.
-          </p>
-
           {/* Search Bar */}
-          <div className="max-w-2xl mx-auto mb-8">
-            <div className="flex bg-white/90 backdrop-blur rounded-lg overflow-hidden shadow-xl">
+          <div className="w-full max-w-2xl mb-6">
+            <div className="flex items-center bg-white rounded-lg overflow-hidden shadow-lg">
               <input
                 type="text"
-                placeholder="Search for any service..."
-                className="flex-1 px-6 py-4 text-gray-800 focus:outline-none"
+                placeholder="Search for any service ..."
+                className="flex-1 px-6 py-4 text-gray-700 text-base outline-none"
               />
-              <Link href="/vendors" className="px-8 bg-white hover:bg-gray-50 transition flex items-center justify-center">
-                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </Link>
+              <button className="px-6 py-4 text-gray-400 hover:text-[#00c896] transition-colors">
+                <SearchIcon />
+              </button>
             </div>
           </div>
 
           {/* Category Pills */}
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
-            {['Architect', 'Electrician', 'Plumber', 'Roofer', 'Painter', 'Carpenter', 'Mason', 'Landscaper'].map((category) => (
+          <div className="flex flex-wrap justify-center gap-2 mb-8 max-w-3xl">
+            {quickCategories.map((cat) => (
               <Link
-                key={category}
-                href={`/vendors?category=${category.toLowerCase()}`}
-                className="px-5 py-2 bg-white/20 backdrop-blur text-white rounded-full hover:bg-white/30 transition border border-white/30"
+                key={cat}
+                href={`/categories/${cat.toLowerCase()}`}
+                className="px-4 py-1.5 bg-white/20 backdrop-blur-sm text-white text-sm rounded-full hover:bg-white/30 transition-colors"
               >
-                {category}
+                {cat}
               </Link>
             ))}
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/auth/signup"
-              className="inline-block px-8 py-3 bg-white text-[#0B4F6C] font-semibold rounded hover:bg-gray-50 transition shadow-lg"
-            >
-              Start Building Today
-            </Link>
-            <Link 
-              href="/auth/signup?role=vendor"
-              className="inline-block px-8 py-3 bg-white/10 backdrop-blur text-white font-semibold rounded hover:bg-white/20 transition border border-white/30"
-            >
-              Become a Contractor
-            </Link>
+          {/* Become a Contractor Button */}
+          <Link
+            href="/become-contractor"
+            className="px-8 py-3 bg-white text-[#0a1628] text-sm font-medium rounded hover:bg-gray-100 transition-colors"
+          >
+            Become a Contractor
+          </Link>
+
+          {/* Carousel Dots */}
+          <div className="flex gap-2 mt-8">
+            {[0, 1, 2, 3].map((i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentSlide(i)}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  currentSlide === i ? 'bg-white' : 'bg-white/40'
+                }`}
+              />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 px-6 bg-gray-50">
+      {/* Explore Top Service Categories */}
+      <section className="py-16 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-xl bg-gradient-to-br from-gray-200 to-gray-300">
-              {/* Placeholder for construction workers image */}
-              <div className="w-full h-full flex items-center justify-center text-gray-400">
-                <svg className="w-24 h-24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                </svg>
-              </div>
-            </div>
-            
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-8">
-                Everything You Need to<br />Hire, Track, and Pay with Ease
-              </h2>
-              
-              <div className="space-y-8">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-16 h-16 bg-[#0B4F6C] rounded-lg flex items-center justify-center">
-                    <svg className="w-8 h-8 text-[#20BF55]" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
-                      <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Top Rated Vendors</h3>
-                    <p className="text-gray-600">
-                      Discover verified and highly rated professionals across all services.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-16 h-16 bg-[#0B4F6C] rounded-lg flex items-center justify-center">
-                    <svg className="w-8 h-8 text-[#20BF55]" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Find the Right Vendors</h3>
-                    <p className="text-gray-600">
-                      Easily browse and connect with the right experts for your project needs.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-16 h-16 bg-[#0B4F6C] rounded-lg flex items-center justify-center">
-                    <svg className="w-8 h-8 text-[#20BF55]" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Track Your Project Progress</h3>
-                    <p className="text-gray-600">
-                      Stay updated in real time with tools that keep your project on schedule.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-16 h-16 bg-[#0B4F6C] rounded-lg flex items-center justify-center">
-                    <svg className="w-8 h-8 text-[#20BF55]" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/>
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clipRule="evenodd"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Secured Payment</h3>
-                    <p className="text-gray-600">
-                      Your funds are safe until you&apos;re fully satisfied with the work.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How it Works Section */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              How NESTS Works
+          <div className="flex items-center justify-between mb-10">
+            <h2 className="text-3xl md:text-4xl font-light text-[#0a1628]">
+              Explore Top Service Categories
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Building from abroad has never been easier. Here&apos;s how we help you succeed.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#0B4F6C] rounded-lg flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-[#20BF55]" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
-                  <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd"/>
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Post Your Project</h3>
-              <p className="text-gray-600">
-                Describe your construction needs in detail. It&apos;s quick, easy, and free.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#0B4F6C] rounded-lg flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-[#20BF55]" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Get Matched & Receive Bids</h3>
-              <p className="text-gray-600">
-                We connect you with qualified contractors. Compare bids and profiles.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#0B4F6C] rounded-lg flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-[#20BF55]" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Hire & Get Work Done</h3>
-              <p className="text-gray-600">
-                Choose the best fit, hire securely, and watch your project come to life.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Service Categories Section */}
-      <section className="py-20 px-6 bg-neutral-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4">
-            <h2 className="text-4xl font-bold text-gray-900">
-              Explore Service Categories
-            </h2>
-            <Link 
-              href="/vendors"
-              className="px-6 py-3 bg-[#20BF55] text-white font-semibold rounded hover:bg-[#1aa849] transition"
+            <Link
+              href="/categories"
+              className="px-6 py-2.5 bg-[#00c896] text-white text-sm font-medium rounded hover:bg-[#00b085] transition-colors"
             >
               View All Categories
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { name: 'General Contractor', slug: 'general-contractor' },
-              { name: 'Architect', slug: 'architect' },
-              { name: 'Electrician', slug: 'electrician' },
-              { name: 'Plumber', slug: 'plumber' },
-              { name: 'Roofer', slug: 'roofer' },
-              { name: 'Mason', slug: 'mason' },
-              { name: 'Painter', slug: 'painter' },
-              { name: 'Carpenter', slug: 'carpenter' },
-            ].map((category) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {categories.map((category, index) => (
               <Link
-                key={category.slug}
-                href={`/vendors?category=${category.slug}`}
-                className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition bg-white"
+                key={category.name}
+                href={`/categories/${category.name.toLowerCase()}`}
+                className="group relative overflow-hidden rounded-lg aspect-[4/5]"
               >
-                <div className="aspect-[4/3] relative bg-gradient-to-br from-gray-100 to-gray-200">
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <svg className="w-16 h-16 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#0B4F6C] transition">
+                <Image
+                  src={category.image}
+                  alt={category.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <h3 className={`text-lg font-medium mb-1 ${index === 1 ? 'text-[#00c896]' : 'text-white'}`}>
                     {category.name}
                   </h3>
+                  <p className="text-white/80 text-xs leading-relaxed">
+                    {category.description}
+                  </p>
                 </div>
               </Link>
             ))}
@@ -253,35 +175,501 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative py-20 px-6 bg-gradient-to-r from-[#0B4F6C] to-[#01BAEF] overflow-hidden">
-        <div className="absolute right-0 bottom-0 w-1/2 h-full">
-          <div className="absolute inset-0 bg-gradient-to-l from-[#20BF55]/30 to-transparent"></div>
-        </div>
-        
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Start Your Project?
-          </h2>
-          <p className="text-xl text-white/90 mb-8">
-            Join thousands of diaspora homebuilders who trust NESTS to bring their dreams home.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/auth/signup"
-              className="inline-block px-8 py-4 bg-white text-[#0B4F6C] font-semibold rounded hover:bg-gray-50 transition shadow-lg text-lg"
-            >
-              Create Free Account
-            </Link>
-            <Link 
-              href="/auth/signup?role=vendor"
-              className="inline-block px-8 py-4 bg-white/10 backdrop-blur text-white font-semibold rounded hover:bg-white/20 transition border border-white/30 text-lg"
-            >
-              Join as Vendor
-            </Link>
+      {/* Everything You Need Section */}
+      <section className="py-16 bg-[#0a1628]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Image */}
+            <div className="relative h-[500px] rounded-lg overflow-hidden">
+              <Image
+                src="/images/contractors-meeting.jpg"
+                alt="Contractors meeting"
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            {/* Content */}
+            <div>
+              <h2 className="text-3xl md:text-4xl font-light text-white mb-10 leading-tight">
+                Everything You Need to<br />
+                Hire, Track, and Pay with Ease
+              </h2>
+
+              <div className="grid grid-cols-2 gap-8">
+                {/* Top Rated Vendors */}
+                <div>
+                  <div className="w-14 h-14 bg-[#00c896] rounded-lg flex items-center justify-center mb-4">
+                    <StarIcon className="w-7 h-7 text-white" />
+                  </div>
+                  <h3 className="text-white text-lg font-medium mb-2">Top Rated Vendors</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    Discover verified and highly rated professionals across all services.
+                  </p>
+                </div>
+
+                {/* Find the Vendors */}
+                <div>
+                  <div className="w-14 h-14 bg-[#00c896] rounded-lg flex items-center justify-center mb-4">
+                    <PlusIcon className="w-7 h-7 text-white" />
+                  </div>
+                  <h3 className="text-white text-lg font-medium mb-2">Find the Vendors</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    Easily browse and connect with the right experts for your project needs.
+                  </p>
+                </div>
+
+                {/* Track Your Project Progress */}
+                <div>
+                  <div className="w-14 h-14 bg-[#00c896] rounded-lg flex items-center justify-center mb-4">
+                    <CheckCircleIcon className="w-7 h-7 text-white" />
+                  </div>
+                  <h3 className="text-white text-lg font-medium mb-2">Track Your Project Progress</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    Stay updated in real time with tools that keep your Project on schedule.
+                  </p>
+                </div>
+
+                {/* Secured Payment */}
+                <div>
+                  <div className="w-14 h-14 bg-[#00c896] rounded-lg flex items-center justify-center mb-4">
+                    <DollarIcon className="w-7 h-7 text-white" />
+                  </div>
+                  <h3 className="text-white text-lg font-medium mb-2">Secured Payment</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    Your funds are safe until you're fully satisfied.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
+      {/* What Our Customers Say */}
+      <section className="py-16 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-8 items-start">
+            {/* Title Column */}
+            <div>
+              <h2 className="text-3xl md:text-4xl font-light text-[#0a1628] mb-6">
+                What Our<br />
+                Customers Say
+              </h2>
+              <div className="flex items-center gap-3">
+                <Link
+                  href="/reviews"
+                  className="px-6 py-2.5 bg-[#00c896] text-white text-sm font-medium rounded hover:bg-[#00b085] transition-colors"
+                >
+                  View All Reviews
+                </Link>
+                <div className="flex gap-2">
+                  <button 
+                    onClick={() => setCurrentTestimonial(Math.max(0, currentTestimonial - 1))}
+                    className="w-10 h-10 rounded-full border-2 border-[#0a1628] flex items-center justify-center hover:bg-[#0a1628] hover:text-white transition-colors"
+                  >
+                    <ChevronLeftIcon className="w-5 h-5" />
+                  </button>
+                  <button 
+                    onClick={() => setCurrentTestimonial(Math.min(testimonials.length - 1, currentTestimonial + 1))}
+                    className="w-10 h-10 rounded-full border-2 border-[#0a1628] flex items-center justify-center hover:bg-[#0a1628] hover:text-white transition-colors"
+                  >
+                    <ChevronRightIcon className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial Cards */}
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-white">
+                <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                  {testimonial.text}
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center">
+                    <span className="text-white text-sm font-medium">
+                      {testimonial.name.charAt(0)}
+                    </span>
+                  </div>
+                  <span className="text-[#0a1628] font-medium">{testimonial.name}</span>
+                  <div className="flex gap-0.5 ml-2">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <StarFilledIcon key={i} className="w-4 h-4 text-amber-400" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How it Works */}
+      <section className="py-16 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Content */}
+            <div>
+              <h2 className="text-3xl md:text-4xl font-light text-[#0a1628] mb-10">
+                How it Works
+              </h2>
+
+              <div className="space-y-8">
+                {/* Step 1 */}
+                <div className="flex gap-4">
+                  <div className="w-14 h-14 bg-[#e8f7f3] rounded-lg flex items-center justify-center flex-shrink-0">
+                    <DocumentIcon className="w-7 h-7 text-[#00c896]" />
+                  </div>
+                  <div>
+                    <h3 className="text-[#00c896] text-lg font-medium mb-1">Post your project</h3>
+                    <p className="text-gray-600 text-sm">
+                      Describe your construction needs in detail. It's quick, easy, and free.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Step 2 */}
+                <div className="flex gap-4">
+                  <div className="w-14 h-14 bg-[#e8f7f3] rounded-lg flex items-center justify-center flex-shrink-0">
+                    <HandshakeIcon className="w-7 h-7 text-[#00c896]" />
+                  </div>
+                  <div>
+                    <h3 className="text-[#00c896] text-lg font-medium mb-1">Get Matched & Receive Bids</h3>
+                    <p className="text-gray-600 text-sm">
+                      We connect you with qualified contractors. Compare bids and profiles.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Step 3 */}
+                <div className="flex gap-4">
+                  <div className="w-14 h-14 bg-[#e8f7f3] rounded-lg flex items-center justify-center flex-shrink-0">
+                    <FolderIcon className="w-7 h-7 text-[#00c896]" />
+                  </div>
+                  <div>
+                    <h3 className="text-[#00c896] text-lg font-medium mb-1">Hire & Get Work Done</h3>
+                    <p className="text-gray-600 text-sm">
+                      Choose the best fit, hire securely, and watch your project come to life.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Image */}
+            <div className="relative h-[450px] rounded-lg overflow-hidden">
+              <Image
+                src="/images/contractors-working.jpg"
+                alt="Contractors reviewing plans"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Ready to Start Your Project CTA */}
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/construction-site.jpg"
+            alt="Construction site"
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-[#0a1628]/80" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-white mb-4">
+            Ready to Start Your Project?
+          </h2>
+          <p className="text-gray-300 text-lg mb-8">
+            Join thousands of satisfied clients and contractors today.
+          </p>
+          <Link
+            href="/signup"
+            className="inline-block px-8 py-3 bg-white text-[#0a1628] text-sm font-medium rounded hover:bg-gray-100 transition-colors"
+          >
+            Sign Up Now
+          </Link>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-white py-12 px-6 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-8 mb-12">
+            {/* Logo Column */}
+            <div className="col-span-2 md:col-span-1">
+              <Link href="/" className="flex items-center gap-2 mb-6">
+                <div className="w-10 h-10">
+                  <AfricaLogoGreen />
+                </div>
+                <span className="text-[#0a1628] text-xl font-bold tracking-wide">NESTS</span>
+              </Link>
+              <div className="flex gap-4">
+                <Link href="#" className="text-gray-400 hover:text-[#0a1628] transition-colors">
+                  <FacebookIcon className="w-5 h-5" />
+                </Link>
+                <Link href="#" className="text-gray-400 hover:text-[#0a1628] transition-colors">
+                  <XIcon className="w-5 h-5" />
+                </Link>
+                <Link href="#" className="text-gray-400 hover:text-[#0a1628] transition-colors">
+                  <InstagramIcon className="w-5 h-5" />
+                </Link>
+                <Link href="#" className="text-gray-400 hover:text-[#0a1628] transition-colors">
+                  <LinkedInIcon className="w-5 h-5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Categories */}
+            <div>
+              <h4 className="text-[#0a1628] font-semibold text-sm mb-4">Categories</h4>
+              <ul className="space-y-2">
+                {['Plumbing', 'Electrical', 'Roofing', 'HVAC', 'Painting', 'Carpentry', 'Landscaping', 'Flooring'].map((item) => (
+                  <li key={item}>
+                    <Link href={`/categories/${item.toLowerCase()}`} className="text-gray-500 text-sm hover:text-[#00c896] transition-colors">
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* For Clients */}
+            <div>
+              <h4 className="text-[#0a1628] font-semibold text-sm mb-4">For Clients</h4>
+              <ul className="space-y-2">
+                {['How It Works', 'Customer Stories', 'Trust & Safety', 'Quality Guide', 'Client Guides'].map((item) => (
+                  <li key={item}>
+                    <Link href="#" className="text-gray-500 text-sm hover:text-[#00c896] transition-colors">
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* For Contractors */}
+            <div>
+              <h4 className="text-[#0a1628] font-semibold text-sm mb-4">For Contractors</h4>
+              <ul className="space-y-2">
+                {['Become a Contractor', 'Community Hub', 'Resources', 'Events'].map((item) => (
+                  <li key={item}>
+                    <Link href="#" className="text-gray-500 text-sm hover:text-[#00c896] transition-colors">
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Business Solutions */}
+            <div>
+              <h4 className="text-[#0a1628] font-semibold text-sm mb-4">Business Solutions</h4>
+              <ul className="space-y-2">
+                {['Construction Pro', 'Project Management Service', 'Expert Sourcing Service', 'AI Tools for Contractors'].map((item) => (
+                  <li key={item}>
+                    <Link href="#" className="text-gray-500 text-sm hover:text-[#00c896] transition-colors">
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Company */}
+            <div>
+              <h4 className="text-[#0a1628] font-semibold text-sm mb-4">Company</h4>
+              <ul className="space-y-2">
+                {['About Us', 'Careers', 'Terms of Service', 'Privacy Policy', 'Contact Us'].map((item) => (
+                  <li key={item}>
+                    <Link href="#" className="text-gray-500 text-sm hover:text-[#00c896] transition-colors">
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Footer */}
+          <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-gray-400 text-sm">
+              © Nests 2025. All Rights Reserved.
+            </p>
+            <div className="flex gap-6">
+              <Link href="/privacy" className="text-gray-400 text-sm hover:text-[#00c896] transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/cookies" className="text-gray-400 text-sm hover:text-[#00c896] transition-colors">
+                Cookie Policy
+              </Link>
+              <Link href="/terms" className="text-gray-400 text-sm hover:text-[#00c896] transition-colors">
+                Terms & Conditions
+              </Link>
+            </div>
+            <p className="text-gray-400 text-sm">
+              Crafted by Alliancetek
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
+  );
+}
+
+// ============================================
+// Icon Components
+// ============================================
+
+function AfricaLogo() {
+  return (
+    <svg viewBox="0 0 40 40" fill="none" className="w-full h-full">
+      <path
+        d="M20 2C18 4 15 5 14 8C13 11 14 14 13 17C12 20 10 22 11 25C12 28 15 30 17 33C19 36 20 38 20 38C20 38 21 36 23 33C25 30 28 28 29 25C30 22 28 20 27 17C26 14 27 11 26 8C25 5 22 4 20 2Z"
+        fill="white"
+        opacity="0.9"
+      />
+      <circle cx="20" cy="18" r="3" fill="#0a1628" opacity="0.3" />
+    </svg>
+  );
+}
+
+function AfricaLogoGreen() {
+  return (
+    <svg viewBox="0 0 40 40" fill="none" className="w-full h-full">
+      <path
+        d="M20 2C18 4 15 5 14 8C13 11 14 14 13 17C12 20 10 22 11 25C12 28 15 30 17 33C19 36 20 38 20 38C20 38 21 36 23 33C25 30 28 28 29 25C30 22 28 20 27 17C26 14 27 11 26 8C25 5 22 4 20 2Z"
+        fill="#00c896"
+        opacity="0.9"
+      />
+      <circle cx="20" cy="18" r="3" fill="#0a1628" opacity="0.3" />
+    </svg>
+  );
+}
+
+function SearchIcon() {
+  return (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    </svg>
+  );
+}
+
+function StarIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+    </svg>
+  );
+}
+
+function StarFilledIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+    </svg>
+  );
+}
+
+function PlusIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+    </svg>
+  );
+}
+
+function CheckCircleIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  );
+}
+
+function DollarIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  );
+}
+
+function DocumentIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+    </svg>
+  );
+}
+
+function HandshakeIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12.22 19.85c-.18.18-.5.21-.71 0L3.93 12.27a2 2 0 010-2.83l3.54-3.54a2 2 0 012.83 0l.71.71-1.77 1.77a1.5 1.5 0 000 2.12l3.18 3.18a1.5 1.5 0 002.12 0l1.77-1.77.71.71a2 2 0 010 2.83l-3.54 3.54c-.18.18-.5.21-.71 0l-.55-.55z" />
+      <path d="M20.07 11.73a2 2 0 000-2.83l-3.54-3.54a2 2 0 00-2.83 0l-.71.71 1.77 1.77a1.5 1.5 0 010 2.12l-3.18 3.18a1.5 1.5 0 01-2.12 0L7.69 11.37l-.71.71a2 2 0 000 2.83l3.54 3.54" />
+    </svg>
+  );
+}
+
+function FolderIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+      <path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6 10H6v-2h8v2zm4-4H6v-2h12v2z" />
+    </svg>
+  );
+}
+
+function ChevronLeftIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+    </svg>
+  );
+}
+
+function ChevronRightIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+    </svg>
+  );
+}
+
+function FacebookIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+      <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+    </svg>
+  );
+}
+
+function XIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
+
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+    </svg>
+  );
+}
+
+function LinkedInIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    </svg>
   );
 }
