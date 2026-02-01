@@ -111,7 +111,7 @@ export default function LandingPage() {
         <div style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to right, rgba(10, 22, 40, 0.85), rgba(10, 22, 40, 0.6))',
+          background: 'linear-gradient(to right, rgba(5, 57, 108, 0.85), rgba(5, 57, 108, 0.6))',
         }} />
         
         <div style={{ 
@@ -203,7 +203,7 @@ export default function LandingPage() {
           <Link href="/auth/signup?role=vendor" style={{
             padding: '0.75rem 2rem',
             backgroundColor: 'white',
-            color: '#0a1628',
+            color: '#05396c',
             fontSize: '0.875rem',
             fontWeight: 500,
             borderRadius: '0.375rem',
@@ -243,7 +243,7 @@ export default function LandingPage() {
             marginBottom: '2.5rem',
             gap: '1rem'
           }}>
-            <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.25rem)', fontWeight: 300, color: '#0a1628' }}>
+            <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.25rem)', fontWeight: 300, color: '#05396c' }}>
               Explore Top Service Categories
             </h2>
             <Link href="/vendors" style={{
@@ -313,7 +313,7 @@ export default function LandingPage() {
       </section>
 
       {/* Everything You Need Section */}
-      <section style={{ padding: '4rem 1.5rem', backgroundColor: '#0a1628' }}>
+      <section style={{ padding: '4rem 1.5rem', backgroundColor: 'white' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
           <div style={{ 
             display: 'grid', 
@@ -341,33 +341,68 @@ export default function LandingPage() {
 
             {/* Content */}
             <div>
-              <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.25rem)', fontWeight: 300, color: 'white', marginBottom: '2.5rem', lineHeight: 1.2 }}>
+              <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.25rem)', fontWeight: 300, color: '#05396c', marginBottom: '2.5rem', lineHeight: 1.2 }}>
                 Everything You Need to<br />Hire, Track, and Pay with Ease
               </h2>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '2rem' }}>
                 {[
-                  { icon: '⭐', title: 'Top Rated Vendors', desc: 'Discover verified and highly rated professionals across all services.' },
-                  { icon: '🔍', title: 'Find the Vendors', desc: 'Easily browse and connect with the right experts for your project needs.' },
-                  { icon: '✓', title: 'Track Your Progress', desc: 'Stay updated in real time with tools that keep your project on schedule.' },
-                  { icon: '💰', title: 'Secured Payment', desc: "Your funds are safe until you're fully satisfied." },
+                  { 
+                    title: 'Top Rated Vendors', 
+                    desc: 'Discover verified and highly rated professionals across all services.',
+                    icon: (
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="3" width="18" height="18" rx="4" fill="#05396c"/>
+                        <path d="M12 8l1.5 3 3.5.5-2.5 2.5.5 3.5L12 16l-3 1.5.5-3.5L7 11.5l3.5-.5L12 8z" fill="#00c896"/>
+                      </svg>
+                    )
+                  },
+                  { 
+                    title: 'Find the Vendors', 
+                    desc: 'Easily browse and connect with the right experts for your project needs.',
+                    icon: (
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="3" width="18" height="18" rx="4" fill="#05396c"/>
+                        <path d="M12 7v2m0 6v2m-5-5h2m6 0h2m-7.5-3.5l1.5 1.5m4 4l1.5 1.5m-7 0l1.5-1.5m4-4l1.5-1.5" stroke="#00c896" strokeWidth="2" strokeLinecap="round"/>
+                      </svg>
+                    )
+                  },
+                  { 
+                    title: 'Track Your Project Progress', 
+                    desc: 'Stay updated in real time with tools that keep your Project on schedule.',
+                    icon: (
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="3" width="18" height="18" rx="4" fill="#05396c"/>
+                        <circle cx="12" cy="12" r="5" stroke="#00c896" strokeWidth="2"/>
+                        <path d="M12 9v3l2 2" stroke="#00c896" strokeWidth="2" strokeLinecap="round"/>
+                      </svg>
+                    )
+                  },
+                  { 
+                    title: 'Secured Payment', 
+                    desc: "Your funds are safe until you're fully satisfied.",
+                    icon: (
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="3" width="18" height="18" rx="4" fill="#05396c"/>
+                        <circle cx="12" cy="12" r="5" stroke="#00c896" strokeWidth="2"/>
+                        <path d="M12 9v6M10 11h4" stroke="#00c896" strokeWidth="2" strokeLinecap="round"/>
+                      </svg>
+                    )
+                  },
                 ].map((item, i) => (
                   <div key={i}>
                     <div style={{
                       width: '56px',
                       height: '56px',
-                      backgroundColor: '#00c896',
-                      borderRadius: '0.5rem',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       marginBottom: '1rem',
-                      fontSize: '1.5rem'
                     }}>
                       {item.icon}
                     </div>
-                    <h3 style={{ color: 'white', fontSize: '1.125rem', fontWeight: 500, marginBottom: '0.5rem' }}>{item.title}</h3>
-                    <p style={{ color: '#9ca3af', fontSize: '0.875rem', lineHeight: 1.6 }}>{item.desc}</p>
+                    <h3 style={{ color: '#05396c', fontSize: '1.125rem', fontWeight: 500, marginBottom: '0.5rem' }}>{item.title}</h3>
+                    <p style={{ color: '#6b7280', fontSize: '0.875rem', lineHeight: 1.6 }}>{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -392,7 +427,6 @@ export default function LandingPage() {
                 fontWeight: 400, 
                 color: 'white', 
                 marginBottom: '2rem',
-                fontStyle: 'italic',
                 lineHeight: 1.3
               }}>
                 What Our<br />Customers Say
@@ -655,7 +689,7 @@ export default function LandingPage() {
         <div style={{
           position: 'absolute',
           inset: 0,
-          backgroundColor: 'rgba(10, 22, 40, 0.85)',
+          backgroundColor: 'rgba(5, 57, 108, 0.85)',
         }} />
         
         <div style={{ position: 'relative', zIndex: 10, maxWidth: '1280px', margin: '0 auto', textAlign: 'center' }}>
@@ -669,7 +703,7 @@ export default function LandingPage() {
             display: 'inline-block',
             padding: '0.875rem 2.5rem',
             backgroundColor: 'white',
-            color: '#0a1628',
+            color: '#05396c',
             fontSize: '0.875rem',
             fontWeight: 500,
             borderRadius: '0.375rem',
@@ -701,13 +735,13 @@ export default function LandingPage() {
                     />
                   </svg>
                 </div>
-                <span style={{ color: '#0a1628', fontSize: '1.25rem', fontWeight: 700 }}>NESTS</span>
+                <span style={{ color: '#05396c', fontSize: '1.25rem', fontWeight: 700 }}>NESTS</span>
               </Link>
             </div>
 
             {/* Categories */}
             <div>
-              <h4 style={{ color: '#0a1628', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>Categories</h4>
+              <h4 style={{ color: '#05396c', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>Categories</h4>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 {['Plumbing', 'Electrical', 'Roofing', 'HVAC', 'Painting'].map((item) => (
                   <li key={item} style={{ marginBottom: '0.5rem' }}>
@@ -721,7 +755,7 @@ export default function LandingPage() {
 
             {/* For Clients */}
             <div>
-              <h4 style={{ color: '#0a1628', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>For Clients</h4>
+              <h4 style={{ color: '#05396c', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>For Clients</h4>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 {['How It Works', 'Customer Stories', 'Trust & Safety'].map((item) => (
                   <li key={item} style={{ marginBottom: '0.5rem' }}>
@@ -735,7 +769,7 @@ export default function LandingPage() {
 
             {/* For Contractors */}
             <div>
-              <h4 style={{ color: '#0a1628', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>For Contractors</h4>
+              <h4 style={{ color: '#05396c', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>For Contractors</h4>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 {['Become a Contractor', 'Resources', 'Events'].map((item) => (
                   <li key={item} style={{ marginBottom: '0.5rem' }}>
@@ -749,7 +783,7 @@ export default function LandingPage() {
 
             {/* Company */}
             <div>
-              <h4 style={{ color: '#0a1628', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>Company</h4>
+              <h4 style={{ color: '#05396c', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>Company</h4>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 {['About Us', 'Careers', 'Contact Us'].map((item) => (
                   <li key={item} style={{ marginBottom: '0.5rem' }}>
