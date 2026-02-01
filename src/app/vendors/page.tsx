@@ -121,7 +121,7 @@ export default async function VendorsPage({
 
         {/* Filters */}
         <form className="mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end mb-4">
             {/* Search */}
             <div className="md:col-span-2">
               <div className="relative">
