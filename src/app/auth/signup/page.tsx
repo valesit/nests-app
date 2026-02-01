@@ -70,8 +70,8 @@ function SignupForm() {
   const inputStyle = {
     width: '100%',
     padding: '0.875rem 1rem',
-    backgroundColor: '#1a2a42',
-    border: '1px solid #2d3a54',
+    backgroundColor: '#0d4a7a',
+    border: '1px solid #1a5a8e',
     borderRadius: '0.375rem',
     color: 'white',
     fontSize: '0.875rem',
@@ -103,7 +103,7 @@ function SignupForm() {
       {/* Right Side - Form */}
       <div style={{
         flex: 1,
-        backgroundColor: '#0a1628',
+        backgroundColor: '#14629D',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -253,7 +253,7 @@ function SignupForm() {
                 width: '100%',
                 padding: '0.875rem',
                 backgroundColor: '#00c896',
-                color: '#0a1628',
+                color: '#14629D',
                 fontSize: '1rem',
                 fontWeight: 600,
                 border: 'none',
@@ -302,12 +302,12 @@ export default function SignupPage() {
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'center',
-        backgroundColor: '#0a1628'
+        backgroundColor: '#14629D'
       }}>
         <div style={{
           width: '48px',
           height: '48px',
-          border: '3px solid #1a2a42',
+          border: '3px solid #0d4a7a',
           borderTopColor: '#00c896',
           borderRadius: '50%',
           animation: 'spin 1s linear infinite',
