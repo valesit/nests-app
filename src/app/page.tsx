@@ -331,73 +331,101 @@ export default function LandingPage() {
       </section>
 
       {/* Everything You Need Section */}
-      <section style={{ padding: '5rem 1.5rem', backgroundColor: 'white' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 300, color: '#05396c', marginBottom: '3.5rem', lineHeight: 1.2 }}>
-            Everything You Need to<br />Hire, Track, and Pay with Ease
-          </h2>
+      <section style={{ padding: '0', backgroundColor: 'white' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+          {/* Left Image */}
+          <div style={{ 
+            flex: '1 1 40%', 
+            minWidth: '300px',
+            minHeight: '600px',
+            position: 'relative'
+          }}>
+            <img 
+              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=900&fit=crop"
+              alt="Construction workers on site"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                position: 'absolute',
+                inset: 0,
+              }}
+            />
+          </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3rem' }}>
-            {[
-              { 
-                title: 'Top Rated Vendors', 
-                desc: 'Discover verified and highly rated professionals across all services.',
-                icon: (
-                  <svg width="70" height="70" viewBox="0 0 70 70" fill="none">
-                    <rect x="5" y="5" width="60" height="60" rx="8" fill="#05396c"/>
-                    <path d="M35 22l5 10 11 1.5-8 8 2 11-10-5.5-10 5.5 2-11-8-8 11-1.5 5-10z" fill="#00c896"/>
-                  </svg>
-                )
-              },
-              { 
-                title: 'Find the Vendors', 
-                desc: 'Easily browse and connect with the right experts for your project needs.',
-                icon: (
-                  <svg width="70" height="70" viewBox="0 0 70 70" fill="none">
-                    <rect x="5" y="5" width="60" height="60" rx="8" fill="#05396c"/>
-                    <path d="M35 20v6m0 18v6m-15-15h6m18 0h6" stroke="#00c896" strokeWidth="4" strokeLinecap="round"/>
-                    <path d="M24 24l4 4m14 14l4 4m-22 0l4-4m14-14l4-4" stroke="#00c896" strokeWidth="4" strokeLinecap="round"/>
-                  </svg>
-                )
-              },
-              { 
-                title: 'Track Your Project Progress', 
-                desc: 'Stay updated in real time with tools that keep your Project on schedule.',
-                icon: (
-                  <svg width="70" height="70" viewBox="0 0 70 70" fill="none">
-                    <rect x="5" y="5" width="60" height="60" rx="8" fill="#05396c"/>
-                    <circle cx="35" cy="35" r="16" stroke="#00c896" strokeWidth="4"/>
-                    <path d="M35 25v10l7 7" stroke="#00c896" strokeWidth="4" strokeLinecap="round"/>
-                  </svg>
-                )
-              },
-              { 
-                title: 'Secured Payment', 
-                desc: "Your funds are safe until you're fully satisfied.",
-                icon: (
-                  <svg width="70" height="70" viewBox="0 0 70 70" fill="none">
-                    <rect x="5" y="5" width="60" height="60" rx="8" fill="#05396c"/>
-                    <circle cx="35" cy="35" r="16" stroke="#00c896" strokeWidth="4"/>
-                    <path d="M35 25v20M29 32h12" stroke="#00c896" strokeWidth="4" strokeLinecap="round"/>
-                  </svg>
-                )
-              },
-            ].map((item, i) => (
-              <div key={i}>
-                <div style={{
-                  width: '70px',
-                  height: '70px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '1.5rem',
-                }}>
-                  {item.icon}
+          {/* Right Content */}
+          <div style={{ 
+            flex: '1 1 60%', 
+            minWidth: '300px',
+            padding: '4rem 3rem',
+            backgroundColor: 'white'
+          }}>
+            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 300, color: '#05396c', marginBottom: '3rem', lineHeight: 1.2 }}>
+              Everything You Need to<br />Hire, Track, and Pay with Ease
+            </h2>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '2.5rem' }}>
+              {[
+                { 
+                  title: 'Top Rated Vendors', 
+                  desc: 'Discover verified and highly rated professionals across all services.',
+                  icon: (
+                    <svg width="70" height="70" viewBox="0 0 70 70" fill="none">
+                      <rect x="5" y="5" width="60" height="60" rx="8" fill="#05396c"/>
+                      <path d="M35 22l5 10 11 1.5-8 8 2 11-10-5.5-10 5.5 2-11-8-8 11-1.5 5-10z" fill="#00c896"/>
+                    </svg>
+                  )
+                },
+                { 
+                  title: 'Find the Vendors', 
+                  desc: 'Easily browse and connect with the right experts for your project needs.',
+                  icon: (
+                    <svg width="70" height="70" viewBox="0 0 70 70" fill="none">
+                      <rect x="5" y="5" width="60" height="60" rx="8" fill="#05396c"/>
+                      <path d="M35 20v6m0 18v6m-15-15h6m18 0h6" stroke="#00c896" strokeWidth="4" strokeLinecap="round"/>
+                      <path d="M24 24l4 4m14 14l4 4m-22 0l4-4m14-14l4-4" stroke="#00c896" strokeWidth="4" strokeLinecap="round"/>
+                    </svg>
+                  )
+                },
+                { 
+                  title: 'Track Your Project Progress', 
+                  desc: 'Stay updated in real time with tools that keep your Project on schedule.',
+                  icon: (
+                    <svg width="70" height="70" viewBox="0 0 70 70" fill="none">
+                      <rect x="5" y="5" width="60" height="60" rx="8" fill="#05396c"/>
+                      <circle cx="35" cy="35" r="16" stroke="#00c896" strokeWidth="4"/>
+                      <path d="M35 25v10l7 7" stroke="#00c896" strokeWidth="4" strokeLinecap="round"/>
+                    </svg>
+                  )
+                },
+                { 
+                  title: 'Secured Payment', 
+                  desc: "Your funds are safe until you're fully satisfied.",
+                  icon: (
+                    <svg width="70" height="70" viewBox="0 0 70 70" fill="none">
+                      <rect x="5" y="5" width="60" height="60" rx="8" fill="#05396c"/>
+                      <circle cx="35" cy="35" r="16" stroke="#00c896" strokeWidth="4"/>
+                      <path d="M35 25v20M29 32h12" stroke="#00c896" strokeWidth="4" strokeLinecap="round"/>
+                    </svg>
+                  )
+                },
+              ].map((item, i) => (
+                <div key={i}>
+                  <div style={{
+                    width: '70px',
+                    height: '70px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: '1rem',
+                  }}>
+                    {item.icon}
+                  </div>
+                  <h3 style={{ color: '#05396c', fontSize: '1.25rem', fontWeight: 500, marginBottom: '0.5rem' }}>{item.title}</h3>
+                  <p style={{ color: '#6b7280', fontSize: '0.95rem', lineHeight: 1.6 }}>{item.desc}</p>
                 </div>
-                <h3 style={{ color: '#05396c', fontSize: '1.5rem', fontWeight: 500, marginBottom: '0.75rem' }}>{item.title}</h3>
-                <p style={{ color: '#6b7280', fontSize: '1rem', lineHeight: 1.7 }}>{item.desc}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -542,95 +570,123 @@ export default function LandingPage() {
       </section>
 
       {/* How it Works */}
-      <section style={{ padding: '5rem 1.5rem', backgroundColor: 'white' }}>
-        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <h2 style={{ 
-            fontSize: 'clamp(2rem, 5vw, 3rem)', 
-            fontWeight: 300, 
-            color: '#05396c', 
-            marginBottom: '4rem' 
+      <section style={{ padding: '0', backgroundColor: 'white' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+          {/* Left Content */}
+          <div style={{ 
+            flex: '1 1 50%', 
+            minWidth: '300px',
+            padding: '4rem 3rem',
+            backgroundColor: 'white'
           }}>
-            How it Works
-          </h2>
+            <h2 style={{ 
+              fontSize: 'clamp(2rem, 5vw, 3rem)', 
+              fontWeight: 300, 
+              color: '#05396c', 
+              marginBottom: '3rem' 
+            }}>
+              How it Works
+            </h2>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
-            {/* Step 1 - Post your project */}
-            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <div style={{
-                  width: '70px',
-                  height: '70px',
-                  backgroundColor: '#05396c',
-                  borderRadius: '0.5rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                }}>
-                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-                    <rect x="6" y="3" width="24" height="30" rx="3" fill="#00c896"/>
-                    <rect x="10" y="8" width="16" height="2" rx="1" fill="#05396c"/>
-                    <rect x="10" y="13" width="16" height="2" rx="1" fill="#05396c"/>
-                    <rect x="10" y="18" width="10" height="2" rx="1" fill="#05396c"/>
-                  </svg>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+              {/* Step 1 - Post your project */}
+              <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <div style={{
+                    width: '70px',
+                    height: '70px',
+                    backgroundColor: '#05396c',
+                    borderRadius: '0.5rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                  }}>
+                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                      <rect x="6" y="3" width="24" height="30" rx="3" fill="#00c896"/>
+                      <rect x="10" y="8" width="16" height="2" rx="1" fill="#05396c"/>
+                      <rect x="10" y="13" width="16" height="2" rx="1" fill="#05396c"/>
+                      <rect x="10" y="18" width="10" height="2" rx="1" fill="#05396c"/>
+                    </svg>
+                  </div>
+                  <div style={{ width: '2px', height: '60px', borderLeft: '2px dashed #05396c', marginTop: '0.5rem' }}></div>
                 </div>
-                <div style={{ width: '2px', height: '60px', borderLeft: '2px dashed #05396c', marginTop: '0.5rem' }}></div>
-              </div>
-              <div style={{ paddingTop: '0.5rem' }}>
-                <h3 style={{ color: '#05396c', fontSize: '1.75rem', fontWeight: 500, marginBottom: '0.5rem' }}>Post your project</h3>
-                <p style={{ color: '#4b5563', fontSize: '1.1rem', lineHeight: 1.6 }}>Describe your construction needs in detail. It&apos;s quick, easy, and free.</p>
-              </div>
-            </div>
-
-            {/* Step 2 - Get Matched & Receive Bids */}
-            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <div style={{
-                  width: '70px',
-                  height: '70px',
-                  backgroundColor: '#05396c',
-                  borderRadius: '0.5rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                }}>
-                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-                    <path d="M8 28L18 18L28 28" stroke="#00c896" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M8 18L18 8L28 18" stroke="#00c896" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-                <div style={{ width: '2px', height: '60px', borderLeft: '2px dashed #05396c', marginTop: '0.5rem' }}></div>
-              </div>
-              <div style={{ paddingTop: '0.5rem' }}>
-                <h3 style={{ color: '#05396c', fontSize: '1.75rem', fontWeight: 500, marginBottom: '0.5rem' }}>Get Matched & Receive Bids</h3>
-                <p style={{ color: '#4b5563', fontSize: '1.1rem', lineHeight: 1.6 }}>We connect you with qualified contractors. Compare bids and profiles.</p>
-              </div>
-            </div>
-
-            {/* Step 3 - Hire & Get Work Done */}
-            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <div style={{
-                  width: '70px',
-                  height: '70px',
-                  backgroundColor: '#05396c',
-                  borderRadius: '0.5rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                }}>
-                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-                    <path d="M10 18L16 24L26 12" stroke="#00c896" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+                <div style={{ paddingTop: '0.5rem' }}>
+                  <h3 style={{ color: '#05396c', fontSize: '1.5rem', fontWeight: 500, marginBottom: '0.5rem' }}>Post your project</h3>
+                  <p style={{ color: '#4b5563', fontSize: '1rem', lineHeight: 1.6 }}>Describe your construction needs in detail. It&apos;s quick, easy, and free.</p>
                 </div>
               </div>
-              <div style={{ paddingTop: '0.5rem' }}>
-                <h3 style={{ color: '#05396c', fontSize: '1.75rem', fontWeight: 500, marginBottom: '0.5rem' }}>Hire & Get Work Done</h3>
-                <p style={{ color: '#4b5563', fontSize: '1.1rem', lineHeight: 1.6 }}>Choose the best fit, hire securely, and watch your project come to life.</p>
+
+              {/* Step 2 - Get Matched & Receive Bids */}
+              <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <div style={{
+                    width: '70px',
+                    height: '70px',
+                    backgroundColor: '#05396c',
+                    borderRadius: '0.5rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                  }}>
+                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                      <path d="M8 28L18 18L28 28" stroke="#00c896" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M8 18L18 8L28 18" stroke="#00c896" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                  <div style={{ width: '2px', height: '60px', borderLeft: '2px dashed #05396c', marginTop: '0.5rem' }}></div>
+                </div>
+                <div style={{ paddingTop: '0.5rem' }}>
+                  <h3 style={{ color: '#05396c', fontSize: '1.5rem', fontWeight: 500, marginBottom: '0.5rem' }}>Get Matched & Receive Bids</h3>
+                  <p style={{ color: '#4b5563', fontSize: '1rem', lineHeight: 1.6 }}>We connect you with qualified contractors. Compare bids and profiles.</p>
+                </div>
+              </div>
+
+              {/* Step 3 - Hire & Get Work Done */}
+              <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <div style={{
+                    width: '70px',
+                    height: '70px',
+                    backgroundColor: '#05396c',
+                    borderRadius: '0.5rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                  }}>
+                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                      <path d="M10 18L16 24L26 12" stroke="#00c896" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+                <div style={{ paddingTop: '0.5rem' }}>
+                  <h3 style={{ color: '#05396c', fontSize: '1.5rem', fontWeight: 500, marginBottom: '0.5rem' }}>Hire & Get Work Done</h3>
+                  <p style={{ color: '#4b5563', fontSize: '1rem', lineHeight: 1.6 }}>Choose the best fit, hire securely, and watch your project come to life.</p>
+                </div>
               </div>
             </div>
+          </div>
+
+          {/* Right Image */}
+          <div style={{ 
+            flex: '1 1 50%', 
+            minWidth: '300px',
+            minHeight: '500px',
+            position: 'relative'
+          }}>
+            <img 
+              src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=700&fit=crop"
+              alt="Construction workers reviewing plans"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                position: 'absolute',
+                inset: 0,
+              }}
+            />
           </div>
         </div>
       </section>
