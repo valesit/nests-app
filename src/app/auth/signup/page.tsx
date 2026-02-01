@@ -132,7 +132,7 @@ function SignupForm() {
             fontSize: '2rem', 
             fontWeight: 400, 
             marginBottom: '2rem',
-            fontStyle: 'italic'
+            fontStyle: 'normal'
           }}>
             Client Registration
           </h1>

@@ -97,7 +97,7 @@ function LoginForm() {
             fontSize: '2rem', 
             fontWeight: 400, 
             marginBottom: '2.5rem',
-            fontStyle: 'italic'
+            fontStyle: 'normal'
           }}>
             Client Portal
           </h1>
