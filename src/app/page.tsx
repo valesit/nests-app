@@ -777,10 +777,16 @@ export default function LandingPage() {
             <div>
               <h4 style={{ color: '#05396c', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>For Clients</h4>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                {['How It Works', 'Customer Stories', 'Trust & Safety'].map((item) => (
-                  <li key={item} style={{ marginBottom: '0.5rem' }}>
-                    <Link href="#" style={{ color: '#6b7280', fontSize: '0.875rem', textDecoration: 'none' }}>
-                      {item}
+                {[
+                  { name: 'How It Works', href: '/how-it-works' },
+                  { name: 'Customer Stories', href: '#' },
+                  { name: 'Trust & Safety', href: '#' },
+                  { name: 'Quality Guide', href: '/quality-guide' },
+                  { name: 'Client Guides', href: '/client-guides' },
+                ].map((item) => (
+                  <li key={item.name} style={{ marginBottom: '0.5rem' }}>
+                    <Link href={item.href} style={{ color: '#6b7280', fontSize: '0.875rem', textDecoration: 'none' }}>
+                      {item.name}
                     </Link>
                   </li>
                 ))}
@@ -791,10 +797,14 @@ export default function LandingPage() {
             <div>
               <h4 style={{ color: '#05396c', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>For Contractors</h4>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                {['Become a Contractor', 'Resources', 'Events'].map((item) => (
-                  <li key={item} style={{ marginBottom: '0.5rem' }}>
-                    <Link href="#" style={{ color: '#6b7280', fontSize: '0.875rem', textDecoration: 'none' }}>
-                      {item}
+                {[
+                  { name: 'Become a Contractor', href: '/become-contractor' },
+                  { name: 'Resources', href: '/resources' },
+                  { name: 'Events', href: '#' },
+                ].map((item) => (
+                  <li key={item.name} style={{ marginBottom: '0.5rem' }}>
+                    <Link href={item.href} style={{ color: '#6b7280', fontSize: '0.875rem', textDecoration: 'none' }}>
+                      {item.name}
                     </Link>
                   </li>
                 ))}
