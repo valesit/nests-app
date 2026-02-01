@@ -98,7 +98,7 @@ export default async function VendorsPage({
               Discovery
             </Link>
           )}
-          <h1 className="text-2xl font-bold text-[#05396c]">
+          <h1 className="text-2xl font-medium text-[#05396c]">
             {showCategoryView ? 'Explore Construction Service' : 'Discovery'}
           </h1>
           {showCategoryView && (

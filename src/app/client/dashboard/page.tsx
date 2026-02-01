@@ -143,7 +143,7 @@ export default async function ClientDashboard() {
         {/* Welcome Header */}
         <div className="mb-8">
           <p className="text-[#00c896] text-lg">Welcome, {profile?.full_name?.split(' ')[0] || 'there'}!</p>
-          <h1 className="text-2xl font-bold text-[#05396c]">Your Activity Overview</h1>
+          <h1 className="text-2xl font-medium text-[#05396c]">Your Activity Overview</h1>
         </div>
 
         {/* Stats Cards */}
@@ -227,7 +227,7 @@ export default async function ClientDashboard() {
         {/* Your Active Projects */}
         <div className="bg-white rounded-lg border border-gray-200 mb-8">
           <div className="flex items-center justify-between p-4 border-b border-gray-200">
-            <h2 className="text-lg font-bold text-[#05396c]">Your Active Projects</h2>
+            <h2 className="text-xl font-medium text-[#05396c]">Your Active Projects</h2>
             <Link href="/client/projects" className="text-[#00c896] hover:underline text-sm font-medium">
               View All
             </Link>
@@ -283,7 +283,7 @@ export default async function ClientDashboard() {
         {/* Bids Received */}
         <div className="bg-white rounded-lg border border-gray-200">
           <div className="flex items-center justify-between p-4 border-b border-gray-200">
-            <h2 className="text-lg font-bold text-[#05396c]">Bids Received</h2>
+            <h2 className="text-xl font-medium text-[#05396c]">Bids Received</h2>
             <Link href="/client/bids" className="text-[#00c896] hover:underline text-sm font-medium">
               View All
             </Link>

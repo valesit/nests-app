@@ -261,7 +261,7 @@ export default function LandingPage() {
             marginBottom: '2.5rem',
             gap: '1rem'
           }}>
-            <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.25rem)', fontWeight: 300, color: '#05396c' }}>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 400, color: '#05396c' }}>
               Explore Top Service Categories
             </h2>
             <Link href="/vendors" style={{
@@ -360,7 +360,7 @@ export default function LandingPage() {
             padding: '4rem 3rem',
             backgroundColor: 'white'
           }}>
-            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 300, color: '#05396c', marginBottom: '3rem', lineHeight: 1.2 }}>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 400, color: '#05396c', marginBottom: '3rem', lineHeight: 1.2 }}>
               Everything You Need to<br />Hire, Track, and Pay with Ease
             </h2>
 
@@ -421,8 +421,8 @@ export default function LandingPage() {
                   }}>
                     {item.icon}
                   </div>
-                  <h3 style={{ color: '#05396c', fontSize: '1.25rem', fontWeight: 500, marginBottom: '0.5rem' }}>{item.title}</h3>
-                  <p style={{ color: '#6b7280', fontSize: '0.95rem', lineHeight: 1.6 }}>{item.desc}</p>
+                  <h3 style={{ color: '#05396c', fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.5rem' }}>{item.title}</h3>
+                  <p style={{ color: '#6b7280', fontSize: '0.9rem', lineHeight: 1.6 }}>{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -446,7 +446,7 @@ export default function LandingPage() {
                 fontWeight: 400, 
                 color: 'white', 
                 marginBottom: '2rem',
-                lineHeight: 1.3
+                lineHeight: 1.2
               }}>
                 What Our<br />Customers Say
               </h2>
@@ -580,8 +580,8 @@ export default function LandingPage() {
             backgroundColor: 'white'
           }}>
             <h2 style={{ 
-              fontSize: 'clamp(2rem, 5vw, 3rem)', 
-              fontWeight: 300, 
+              fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', 
+              fontWeight: 400, 
               color: '#05396c', 
               marginBottom: '3rem' 
             }}>
@@ -612,8 +612,8 @@ export default function LandingPage() {
                   <div style={{ width: '2px', height: '60px', borderLeft: '2px dashed #05396c', marginTop: '0.5rem' }}></div>
                 </div>
                 <div style={{ paddingTop: '0.5rem' }}>
-                  <h3 style={{ color: '#05396c', fontSize: '1.5rem', fontWeight: 500, marginBottom: '0.5rem' }}>Post your project</h3>
-                  <p style={{ color: '#4b5563', fontSize: '1rem', lineHeight: 1.6 }}>Describe your construction needs in detail. It&apos;s quick, easy, and free.</p>
+                  <h3 style={{ color: '#05396c', fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.5rem' }}>Post your project</h3>
+                  <p style={{ color: '#4b5563', fontSize: '0.9rem', lineHeight: 1.6 }}>Describe your construction needs in detail. It&apos;s quick, easy, and free.</p>
                 </div>
               </div>
 
@@ -638,8 +638,8 @@ export default function LandingPage() {
                   <div style={{ width: '2px', height: '60px', borderLeft: '2px dashed #05396c', marginTop: '0.5rem' }}></div>
                 </div>
                 <div style={{ paddingTop: '0.5rem' }}>
-                  <h3 style={{ color: '#05396c', fontSize: '1.5rem', fontWeight: 500, marginBottom: '0.5rem' }}>Get Matched & Receive Bids</h3>
-                  <p style={{ color: '#4b5563', fontSize: '1rem', lineHeight: 1.6 }}>We connect you with qualified contractors. Compare bids and profiles.</p>
+                  <h3 style={{ color: '#05396c', fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.5rem' }}>Get Matched & Receive Bids</h3>
+                  <p style={{ color: '#4b5563', fontSize: '0.9rem', lineHeight: 1.6 }}>We connect you with qualified contractors. Compare bids and profiles.</p>
                 </div>
               </div>
 
@@ -662,8 +662,8 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div style={{ paddingTop: '0.5rem' }}>
-                  <h3 style={{ color: '#05396c', fontSize: '1.5rem', fontWeight: 500, marginBottom: '0.5rem' }}>Hire & Get Work Done</h3>
-                  <p style={{ color: '#4b5563', fontSize: '1rem', lineHeight: 1.6 }}>Choose the best fit, hire securely, and watch your project come to life.</p>
+                  <h3 style={{ color: '#05396c', fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.5rem' }}>Hire & Get Work Done</h3>
+                  <p style={{ color: '#4b5563', fontSize: '0.9rem', lineHeight: 1.6 }}>Choose the best fit, hire securely, and watch your project come to life.</p>
                 </div>
               </div>
             </div>
@@ -713,7 +713,7 @@ export default function LandingPage() {
         }} />
         
         <div style={{ position: 'relative', zIndex: 10, maxWidth: '1280px', margin: '0 auto', textAlign: 'center' }}>
-          <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 300, color: 'white', marginBottom: '1rem' }}>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 400, color: 'white', marginBottom: '1rem' }}>
             Ready to Start Your Project?
           </h2>
           <p style={{ color: '#d1d5db', fontSize: '1.125rem', marginBottom: '2rem' }}>
