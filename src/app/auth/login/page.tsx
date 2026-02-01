@@ -32,7 +32,6 @@ function LoginForm() {
       }
 
       if (data.user) {
-        // Get user role to redirect appropriately
         const { data: profile } = await supabase
           .from('profiles')
           .select('role')
@@ -52,80 +51,196 @@ function LoginForm() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-200px)] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-neutral-50">
-      <div className="max-w-md w-full">
-        <div className="card">
-          <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-neutral-900">Welcome Back</h1>
-            <p className="text-neutral-600 mt-2">Sign in to your NESTS account</p>
+    <div style={{ 
+      minHeight: '100vh', 
+      display: 'flex',
+      fontFamily: "'Inter', sans-serif"
+    }}>
+      {/* Left Side - Background Image */}
+      <div style={{
+        flex: 1,
+        backgroundImage: 'url(/images/auth-bg.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        display: 'none',
+      }} className="auth-image-panel" />
+
+      {/* Right Side - Form */}
+      <div style={{
+        flex: 1,
+        backgroundColor: '#0a1628',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '2rem',
+        minHeight: '100vh',
+      }}>
+        <div style={{ width: '100%', maxWidth: '450px' }}>
+          {/* Logo */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2.5rem' }}>
+            <div style={{ width: '48px', height: '48px' }}>
+              <svg viewBox="0 0 40 40" fill="none" style={{ width: '100%', height: '100%' }}>
+                <path
+                  d="M20 2C18 4 15 5 14 8C13 11 14 14 13 17C12 20 10 22 11 25C12 28 15 30 17 33C19 36 20 38 20 38C20 38 21 36 23 33C25 30 28 28 29 25C30 22 28 20 27 17C26 14 27 11 26 8C25 5 22 4 20 2Z"
+                  fill="#00c896"
+                  opacity="0.9"
+                />
+                <circle cx="20" cy="18" r="3" fill="white" opacity="0.3" />
+              </svg>
+            </div>
+            <span style={{ color: 'white', fontSize: '1.75rem', fontWeight: 700, letterSpacing: '0.05em' }}>NESTS</span>
           </div>
 
+          {/* Title */}
+          <h1 style={{ 
+            color: '#00c896', 
+            fontSize: '2rem', 
+            fontWeight: 400, 
+            marginBottom: '2.5rem',
+            fontStyle: 'italic'
+          }}>
+            Client Portal
+          </h1>
+
           {error && (
-            <div className="mb-6 p-4 bg-error-100 border border-error-500 rounded-lg text-error-700 text-sm">
+            <div style={{
+              marginBottom: '1.5rem',
+              padding: '1rem',
+              backgroundColor: 'rgba(239, 68, 68, 0.1)',
+              border: '1px solid #ef4444',
+              borderRadius: '0.5rem',
+              color: '#fca5a5',
+              fontSize: '0.875rem'
+            }}>
               {error}
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="email" className="label">
-                Email Address
-              </label>
-              <input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="input"
-                placeholder="you@example.com"
-                required
-              />
+          <form onSubmit={handleSubmit}>
+            {/* Email and Password Row */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
+              <div>
+                <label style={{ 
+                  display: 'block', 
+                  color: '#9ca3af', 
+                  fontSize: '0.875rem', 
+                  marginBottom: '0.5rem' 
+                }}>
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="your.email@example.com"
+                  required
+                  style={{
+                    width: '100%',
+                    padding: '0.875rem 1rem',
+                    backgroundColor: '#1a2a42',
+                    border: '1px solid #2d3a54',
+                    borderRadius: '0.375rem',
+                    color: 'white',
+                    fontSize: '0.875rem',
+                    outline: 'none',
+                  }}
+                />
+              </div>
+              <div>
+                <label style={{ 
+                  display: 'block', 
+                  color: '#9ca3af', 
+                  fontSize: '0.875rem', 
+                  marginBottom: '0.5rem' 
+                }}>
+                  Password
+                </label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                  required
+                  style={{
+                    width: '100%',
+                    padding: '0.875rem 1rem',
+                    backgroundColor: '#1a2a42',
+                    border: '1px solid #2d3a54',
+                    borderRadius: '0.375rem',
+                    color: 'white',
+                    fontSize: '0.875rem',
+                    outline: 'none',
+                  }}
+                />
+              </div>
             </div>
 
-            <div>
-              <label htmlFor="password" className="label">
-                Password
-              </label>
-              <input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="input"
-                placeholder="••••••••"
-                required
-              />
-            </div>
-
+            {/* Login Button */}
             <button
               type="submit"
               disabled={loading}
-              className="btn-primary w-full py-3"
+              style={{
+                width: '100%',
+                padding: '0.875rem',
+                backgroundColor: '#00c896',
+                color: '#0a1628',
+                fontSize: '1rem',
+                fontWeight: 600,
+                border: 'none',
+                borderRadius: '0.375rem',
+                cursor: loading ? 'not-allowed' : 'pointer',
+                opacity: loading ? 0.7 : 1,
+                marginBottom: '1.5rem',
+              }}
             >
-              {loading ? (
-                <span className="flex items-center justify-center">
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  Signing in...
-                </span>
-              ) : (
-                'Sign In'
-              )}
+              {loading ? 'Logging in...' : 'Login'}
             </button>
-          </form>
 
-          <div className="mt-6 text-center">
-            <p className="text-neutral-600">
-              Don&apos;t have an account?{' '}
-              <Link href="/auth/signup" className="text-primary-600 hover:text-primary-700 font-medium">
-                Sign up
+            {/* Forgot Password */}
+            <div style={{ marginBottom: '2rem' }}>
+              <Link href="/auth/forgot-password" style={{ 
+                color: 'white', 
+                fontSize: '0.875rem', 
+                textDecoration: 'none' 
+              }}>
+                Forgot Password?
               </Link>
-            </p>
-          </div>
+            </div>
+
+            {/* Divider */}
+            <div style={{ marginBottom: '1.5rem' }}>
+              <p style={{ color: '#9ca3af', fontSize: '0.875rem' }}>
+                Don&apos;t have an account?
+              </p>
+            </div>
+
+            {/* Register Button */}
+            <Link href="/auth/signup" style={{
+              display: 'block',
+              width: '100%',
+              padding: '0.875rem',
+              backgroundColor: 'transparent',
+              color: '#00c896',
+              fontSize: '1rem',
+              fontWeight: 500,
+              border: '1px solid #00c896',
+              borderRadius: '0.375rem',
+              textAlign: 'center',
+              textDecoration: 'none',
+            }}>
+              Register Now / Create Account
+            </Link>
+          </form>
         </div>
       </div>
+
+      <style jsx global>{`
+        @media (min-width: 768px) {
+          .auth-image-panel {
+            display: block !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
@@ -133,8 +248,21 @@ function LoginForm() {
 export default function LoginPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-[calc(100vh-200px)] flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+      <div style={{ 
+        minHeight: '100vh', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        backgroundColor: '#0a1628'
+      }}>
+        <div style={{
+          width: '48px',
+          height: '48px',
+          border: '3px solid #1a2a42',
+          borderTopColor: '#00c896',
+          borderRadius: '50%',
+          animation: 'spin 1s linear infinite',
+        }} />
       </div>
     }>
       <LoginForm />
