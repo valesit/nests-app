@@ -216,7 +216,7 @@ export default function BecomeContractorPage() {
               <p style={{ color: '#6b7280', fontSize: '0.875rem', marginBottom: '1.5rem' }}>
                 Ready to take control of your contracting career?
               </p>
-              <Link href="/auth/signup?role=vendor" style={{ display: 'inline-block', padding: '0.875rem 2rem', backgroundColor: '#00c896', color: 'white', borderRadius: '0.375rem', textDecoration: 'none', fontSize: '0.875rem', fontWeight: 500 }}>
+              <Link href="/auth/vendor-signup" style={{ display: 'inline-block', padding: '0.875rem 2rem', backgroundColor: '#00c896', color: 'white', borderRadius: '0.375rem', textDecoration: 'none', fontSize: '0.875rem', fontWeight: 500 }}>
                 Sign Up as a Contractor
               </Link>
             </div>
@@ -231,7 +231,7 @@ export default function BecomeContractorPage() {
         <div style={{ position: 'relative', zIndex: 10, maxWidth: '1280px', margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{ fontSize: '2.5rem', fontWeight: 400, color: 'white', marginBottom: '1rem' }}>Ready to Start Your Project?</h2>
           <p style={{ color: 'white', fontSize: '1.125rem', marginBottom: '2rem' }}>Join thousands of satisfied clients and contractors today.</p>
-          <Link href="/auth/signup" style={{ display: 'inline-block', padding: '0.875rem 2.5rem', backgroundColor: 'white', color: '#05396c', fontSize: '0.875rem', fontWeight: 500, borderRadius: '0.375rem', textDecoration: 'none' }}>Sign Up Now</Link>
+          <Link href="/auth/vendor-signup" style={{ display: 'inline-block', padding: '0.875rem 2.5rem', backgroundColor: 'white', color: '#05396c', fontSize: '0.875rem', fontWeight: 500, borderRadius: '0.375rem', textDecoration: 'none' }}>Sign Up Now</Link>
         </div>
       </section>
 

@@ -218,7 +218,7 @@ export default function LandingPage() {
           </div>
 
           {/* Become a Contractor Button */}
-          <Link href="/auth/signup?role=vendor" style={{
+          <Link href="/auth/vendor-signup" style={{
             padding: '0.75rem 2rem',
             backgroundColor: 'white',
             color: '#05396c',
