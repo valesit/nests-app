@@ -1,10 +1,27 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function LandingPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentBgImage, setCurrentBgImage] = useState(0);
+
+  const heroBackgroundImages = [
+    'https://images.unsplash.com/photo-1541123603104-512919d6a96c?w=1920&h=1080&fit=crop', // Modern living room
+    'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&h=1080&fit=crop', // Construction site
+    'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=1080&fit=crop', // Workers on site
+    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop', // Modern house exterior
+    'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&h=1080&fit=crop', // Interior design
+    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&h=1080&fit=crop', // Luxury interior
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBgImage((prev) => (prev + 1) % heroBackgroundImages.length);
+    }, 15000);
+    return () => clearInterval(interval);
+  }, [heroBackgroundImages.length]);
 
   const categories = [
     { 
@@ -103,9 +120,10 @@ export default function LandingPage() {
         <div style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'url(https://images.unsplash.com/photo-1541123603104-512919d6a96c?w=1920&h=1080&fit=crop)',
+          backgroundImage: `url(${heroBackgroundImages[currentBgImage]})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
+          transition: 'background-image 1s ease-in-out',
         }} />
         {/* Overlay */}
         <div style={{
@@ -313,100 +331,73 @@ export default function LandingPage() {
       </section>
 
       {/* Everything You Need Section */}
-      <section style={{ padding: '4rem 1.5rem', backgroundColor: 'white' }}>
+      <section style={{ padding: '5rem 1.5rem', backgroundColor: 'white' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-            gap: '3rem', 
-            alignItems: 'center' 
-          }}>
-            {/* Image */}
-            <div style={{ 
-              height: '400px', 
-              borderRadius: '0.5rem', 
-              overflow: 'hidden',
-              position: 'relative',
-            }}>
-              <img 
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop"
-                alt="Contractors working"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                }}
-              />
-            </div>
+          <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 300, color: '#05396c', marginBottom: '3.5rem', lineHeight: 1.2 }}>
+            Everything You Need to<br />Hire, Track, and Pay with Ease
+          </h2>
 
-            {/* Content */}
-            <div>
-              <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.25rem)', fontWeight: 300, color: '#05396c', marginBottom: '2.5rem', lineHeight: 1.2 }}>
-                Everything You Need to<br />Hire, Track, and Pay with Ease
-              </h2>
-
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '2rem' }}>
-                {[
-                  { 
-                    title: 'Top Rated Vendors', 
-                    desc: 'Discover verified and highly rated professionals across all services.',
-                    icon: (
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <rect x="3" y="3" width="18" height="18" rx="4" fill="#05396c"/>
-                        <path d="M12 8l1.5 3 3.5.5-2.5 2.5.5 3.5L12 16l-3 1.5.5-3.5L7 11.5l3.5-.5L12 8z" fill="#00c896"/>
-                      </svg>
-                    )
-                  },
-                  { 
-                    title: 'Find the Vendors', 
-                    desc: 'Easily browse and connect with the right experts for your project needs.',
-                    icon: (
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <rect x="3" y="3" width="18" height="18" rx="4" fill="#05396c"/>
-                        <path d="M12 7v2m0 6v2m-5-5h2m6 0h2m-7.5-3.5l1.5 1.5m4 4l1.5 1.5m-7 0l1.5-1.5m4-4l1.5-1.5" stroke="#00c896" strokeWidth="2" strokeLinecap="round"/>
-                      </svg>
-                    )
-                  },
-                  { 
-                    title: 'Track Your Project Progress', 
-                    desc: 'Stay updated in real time with tools that keep your Project on schedule.',
-                    icon: (
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <rect x="3" y="3" width="18" height="18" rx="4" fill="#05396c"/>
-                        <circle cx="12" cy="12" r="5" stroke="#00c896" strokeWidth="2"/>
-                        <path d="M12 9v3l2 2" stroke="#00c896" strokeWidth="2" strokeLinecap="round"/>
-                      </svg>
-                    )
-                  },
-                  { 
-                    title: 'Secured Payment', 
-                    desc: "Your funds are safe until you're fully satisfied.",
-                    icon: (
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <rect x="3" y="3" width="18" height="18" rx="4" fill="#05396c"/>
-                        <circle cx="12" cy="12" r="5" stroke="#00c896" strokeWidth="2"/>
-                        <path d="M12 9v6M10 11h4" stroke="#00c896" strokeWidth="2" strokeLinecap="round"/>
-                      </svg>
-                    )
-                  },
-                ].map((item, i) => (
-                  <div key={i}>
-                    <div style={{
-                      width: '56px',
-                      height: '56px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      marginBottom: '1rem',
-                    }}>
-                      {item.icon}
-                    </div>
-                    <h3 style={{ color: '#05396c', fontSize: '1.125rem', fontWeight: 500, marginBottom: '0.5rem' }}>{item.title}</h3>
-                    <p style={{ color: '#6b7280', fontSize: '0.875rem', lineHeight: 1.6 }}>{item.desc}</p>
-                  </div>
-                ))}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3rem' }}>
+            {[
+              { 
+                title: 'Top Rated Vendors', 
+                desc: 'Discover verified and highly rated professionals across all services.',
+                icon: (
+                  <svg width="70" height="70" viewBox="0 0 70 70" fill="none">
+                    <rect x="5" y="5" width="60" height="60" rx="8" fill="#05396c"/>
+                    <path d="M35 22l5 10 11 1.5-8 8 2 11-10-5.5-10 5.5 2-11-8-8 11-1.5 5-10z" fill="#00c896"/>
+                  </svg>
+                )
+              },
+              { 
+                title: 'Find the Vendors', 
+                desc: 'Easily browse and connect with the right experts for your project needs.',
+                icon: (
+                  <svg width="70" height="70" viewBox="0 0 70 70" fill="none">
+                    <rect x="5" y="5" width="60" height="60" rx="8" fill="#05396c"/>
+                    <path d="M35 20v6m0 18v6m-15-15h6m18 0h6" stroke="#00c896" strokeWidth="4" strokeLinecap="round"/>
+                    <path d="M24 24l4 4m14 14l4 4m-22 0l4-4m14-14l4-4" stroke="#00c896" strokeWidth="4" strokeLinecap="round"/>
+                  </svg>
+                )
+              },
+              { 
+                title: 'Track Your Project Progress', 
+                desc: 'Stay updated in real time with tools that keep your Project on schedule.',
+                icon: (
+                  <svg width="70" height="70" viewBox="0 0 70 70" fill="none">
+                    <rect x="5" y="5" width="60" height="60" rx="8" fill="#05396c"/>
+                    <circle cx="35" cy="35" r="16" stroke="#00c896" strokeWidth="4"/>
+                    <path d="M35 25v10l7 7" stroke="#00c896" strokeWidth="4" strokeLinecap="round"/>
+                  </svg>
+                )
+              },
+              { 
+                title: 'Secured Payment', 
+                desc: "Your funds are safe until you're fully satisfied.",
+                icon: (
+                  <svg width="70" height="70" viewBox="0 0 70 70" fill="none">
+                    <rect x="5" y="5" width="60" height="60" rx="8" fill="#05396c"/>
+                    <circle cx="35" cy="35" r="16" stroke="#00c896" strokeWidth="4"/>
+                    <path d="M35 25v20M29 32h12" stroke="#00c896" strokeWidth="4" strokeLinecap="round"/>
+                  </svg>
+                )
+              },
+            ].map((item, i) => (
+              <div key={i}>
+                <div style={{
+                  width: '70px',
+                  height: '70px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: '1.5rem',
+                }}>
+                  {item.icon}
+                </div>
+                <h3 style={{ color: '#05396c', fontSize: '1.5rem', fontWeight: 500, marginBottom: '0.75rem' }}>{item.title}</h3>
+                <p style={{ color: '#6b7280', fontSize: '1rem', lineHeight: 1.7 }}>{item.desc}</p>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -551,30 +542,24 @@ export default function LandingPage() {
       </section>
 
       {/* How it Works */}
-      <section style={{ position: 'relative', overflow: 'hidden' }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-          {/* Left Content - White Background */}
-          <div style={{ 
-            flex: '1 1 50%', 
-            minWidth: '300px',
-            padding: '4rem 3rem',
-            backgroundColor: 'white'
+      <section style={{ padding: '5rem 1.5rem', backgroundColor: 'white' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+          <h2 style={{ 
+            fontSize: 'clamp(2rem, 5vw, 3rem)', 
+            fontWeight: 300, 
+            color: '#05396c', 
+            marginBottom: '4rem' 
           }}>
-            <h2 style={{ 
-              fontSize: 'clamp(1.5rem, 4vw, 2.25rem)', 
-              fontWeight: 300, 
-              color: '#05396c', 
-              marginBottom: '3rem' 
-            }}>
-              How it Works
-            </h2>
+            How it Works
+          </h2>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
-              {/* Step 1 - Post your project */}
-              <div style={{ display: 'flex', gap: '1rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+            {/* Step 1 - Post your project */}
+            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <div style={{
-                  width: '56px',
-                  height: '56px',
+                  width: '70px',
+                  height: '70px',
                   backgroundColor: '#05396c',
                   borderRadius: '0.5rem',
                   display: 'flex',
@@ -582,91 +567,70 @@ export default function LandingPage() {
                   justifyContent: 'center',
                   flexShrink: 0,
                 }}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                    <rect x="4" y="2" width="16" height="20" rx="2" />
-                    <line x1="8" y1="6" x2="16" y2="6" />
-                    <line x1="8" y1="10" x2="16" y2="10" />
-                    <line x1="8" y1="14" x2="12" y2="14" />
+                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                    <rect x="6" y="3" width="24" height="30" rx="3" fill="#00c896"/>
+                    <rect x="10" y="8" width="16" height="2" rx="1" fill="#05396c"/>
+                    <rect x="10" y="13" width="16" height="2" rx="1" fill="#05396c"/>
+                    <rect x="10" y="18" width="10" height="2" rx="1" fill="#05396c"/>
                   </svg>
                 </div>
-                <div>
-                  <h3 style={{ color: '#00c896', fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.25rem' }}>Post your project</h3>
-                  <p style={{ color: '#4b5563', fontSize: '0.875rem', lineHeight: 1.5 }}>Describe your construction needs in detail. It&apos;s quick, easy, and free.</p>
-                </div>
+                <div style={{ width: '2px', height: '60px', borderLeft: '2px dashed #05396c', marginTop: '0.5rem' }}></div>
               </div>
-
-              {/* Step 2 - Get Matched & Receive Bids */}
-              <div style={{ display: 'flex', gap: '1rem' }}>
-                <div style={{
-                  width: '56px',
-                  height: '56px',
-                  backgroundColor: '#05396c',
-                  borderRadius: '0.5rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                }}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 style={{ color: '#00c896', fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.25rem' }}>Get Matched & Receive Bids</h3>
-                  <p style={{ color: '#4b5563', fontSize: '0.875rem', lineHeight: 1.5 }}>We connect you with qualified contractors. Compare bids and profiles.</p>
-                </div>
-              </div>
-
-              {/* Step 3 - Hire & Get Work Done */}
-              <div style={{ display: 'flex', gap: '1rem' }}>
-                <div style={{
-                  width: '56px',
-                  height: '56px',
-                  backgroundColor: '#05396c',
-                  borderRadius: '0.5rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                }}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                    <polyline points="14 2 14 8 20 8" />
-                    <line x1="16" y1="13" x2="8" y2="13" />
-                    <line x1="16" y1="17" x2="8" y2="17" />
-                    <polyline points="10 9 9 9 8 9" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 style={{ color: '#00c896', fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.25rem' }}>Hire & Get Work Done</h3>
-                  <p style={{ color: '#4b5563', fontSize: '0.875rem', lineHeight: 1.5 }}>Choose the best fit, hire securely, and watch your project come to life.</p>
-                </div>
+              <div style={{ paddingTop: '0.5rem' }}>
+                <h3 style={{ color: '#05396c', fontSize: '1.75rem', fontWeight: 500, marginBottom: '0.5rem' }}>Post your project</h3>
+                <p style={{ color: '#4b5563', fontSize: '1.1rem', lineHeight: 1.6 }}>Describe your construction needs in detail. It&apos;s quick, easy, and free.</p>
               </div>
             </div>
-          </div>
 
-          {/* Right Image - Dark Blue Background */}
-          <div style={{ 
-            flex: '1 1 50%', 
-            minWidth: '300px',
-            backgroundColor: '#05396c',
-            position: 'relative',
-            minHeight: '500px'
-          }}>
-            <img 
-              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop"
-              alt="Construction workers reviewing plans"
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                position: 'absolute',
-                inset: 0,
-              }}
-            />
+            {/* Step 2 - Get Matched & Receive Bids */}
+            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div style={{
+                  width: '70px',
+                  height: '70px',
+                  backgroundColor: '#05396c',
+                  borderRadius: '0.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                }}>
+                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                    <path d="M8 28L18 18L28 28" stroke="#00c896" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M8 18L18 8L28 18" stroke="#00c896" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <div style={{ width: '2px', height: '60px', borderLeft: '2px dashed #05396c', marginTop: '0.5rem' }}></div>
+              </div>
+              <div style={{ paddingTop: '0.5rem' }}>
+                <h3 style={{ color: '#05396c', fontSize: '1.75rem', fontWeight: 500, marginBottom: '0.5rem' }}>Get Matched & Receive Bids</h3>
+                <p style={{ color: '#4b5563', fontSize: '1.1rem', lineHeight: 1.6 }}>We connect you with qualified contractors. Compare bids and profiles.</p>
+              </div>
+            </div>
+
+            {/* Step 3 - Hire & Get Work Done */}
+            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div style={{
+                  width: '70px',
+                  height: '70px',
+                  backgroundColor: '#05396c',
+                  borderRadius: '0.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                }}>
+                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                    <path d="M10 18L16 24L26 12" stroke="#00c896" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div style={{ paddingTop: '0.5rem' }}>
+                <h3 style={{ color: '#05396c', fontSize: '1.75rem', fontWeight: 500, marginBottom: '0.5rem' }}>Hire & Get Work Done</h3>
+                <p style={{ color: '#4b5563', fontSize: '1.1rem', lineHeight: 1.6 }}>Choose the best fit, hire securely, and watch your project come to life.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
