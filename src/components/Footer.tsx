@@ -46,7 +46,7 @@ export function Footer() {
             <h3 className="font-semibold mb-4">For Vendors</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/auth/signup?role=vendor" className="text-primary-200 hover:text-white transition-colors">
+                <Link href="/auth/vendor-signup" className="text-primary-200 hover:text-white transition-colors">
                   Join as Vendor
                 </Link>
               </li>

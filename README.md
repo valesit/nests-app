@@ -95,7 +95,7 @@ Open [http://localhost:3000](http://localhost:3000)
 7. Complete the simulated payment
 
 ### Vendor Flow
-1. Sign up as a vendor at `/auth/signup?role=vendor`
+1. Sign up as a vendor at `/auth/vendor-signup`
 2. Complete your profile at `/vendor/profile`
 3. Add portfolio items at `/vendor/portfolio/new`
 4. Check dashboard for quote requests

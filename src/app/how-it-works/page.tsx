@@ -204,7 +204,7 @@ export default function HowItWorksPage() {
           </div>
 
           <div className="mt-12 text-center">
-            <Link href="/auth/signup?role=vendor" className="btn-secondary text-lg px-8 py-3">
+            <Link href="/auth/vendor-signup" className="btn-secondary text-lg px-8 py-3">
               Join as a Vendor
             </Link>
           </div>
