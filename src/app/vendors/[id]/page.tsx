@@ -100,8 +100,8 @@ export default async function VendorDetailPage({
     }
   ];
 
-  const averageRating = 5;
-  const totalReviews = 75;
+  const averageRating: number = 5;
+  const totalReviews: number = 75;
 
   return (
     <div className="min-h-screen bg-neutral-50 py-8">
