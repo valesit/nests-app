@@ -97,7 +97,7 @@ function VendorSignupForm() {
       <div style={{
         flex: 1,
         position: 'relative',
-        backgroundImage: 'url(/images/auth-bg.jpg)',
+        backgroundImage: 'url(https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=1600&fit=crop)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         display: 'none',
