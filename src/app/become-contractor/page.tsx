@@ -16,7 +16,7 @@ export default function BecomeContractorPage() {
           </Link>
           <div style={{ display: 'flex', gap: '0.75rem' }}>
             <Link href="/auth/login" style={{ padding: '0.5rem 1.5rem', border: '1px solid white', color: 'white', borderRadius: '0.375rem', textDecoration: 'none', fontSize: '0.875rem' }}>Sign In</Link>
-            <Link href="/auth/signup" style={{ padding: '0.5rem 1.5rem', backgroundColor: 'white', color: '#05396c', borderRadius: '0.375rem', textDecoration: 'none', fontSize: '0.875rem' }}>Join</Link>
+            <Link href="/auth/vendor-signup" style={{ padding: '0.5rem 1.5rem', backgroundColor: 'white', color: '#05396c', borderRadius: '0.375rem', textDecoration: 'none', fontSize: '0.875rem' }}>Join</Link>
           </div>
         </div>
         <div style={{ maxWidth: '1280px', margin: '2rem auto 0' }}>
